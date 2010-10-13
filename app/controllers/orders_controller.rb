@@ -9,6 +9,7 @@ class OrdersController < ApplicationController
   def new
     @calendar = Calendar.find(params[:calendar_id])
     @order = Order.new
+    @address = Address.new
     session[:quantity] = params[:quantity]
     session[:total_price] = params[:total_price]
   end

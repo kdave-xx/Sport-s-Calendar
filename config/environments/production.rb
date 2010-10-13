@@ -26,3 +26,12 @@ config.action_view.cache_template_loading            = true
 
 # Enable threaded mode
 # config.threadsafe!
+
+config.after_initialize do
+  ActiveMerchant::Billing::Base.mode = :test
+  ::GATEWAY = ActiveMerchant::Billing::PaypalGateway.new(
+   :login => "nnikum_1265800774_biz_api1.fourthmedia.co.uk",
+   :password => "1265800781",
+   :signature => "AQDwYq8uOHTytSXy.EPC96YfkUhDARYl3faA2PYAG2iGZcpa58DbkTI7"
+  )
+end

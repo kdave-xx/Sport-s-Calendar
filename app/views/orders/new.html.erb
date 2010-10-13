@@ -25,8 +25,8 @@
   </fieldset>
 
   <% form_for(@order, :url => calendar_order_url) do |f| %>
-    <%= f.error_messages %>
-    <%#= error_messages_for :object => [@order, @address] %>
+    <%#= f.error_messages %>
+    <%= error_messages_for :order, :object => [@order, @address] %>
 
     <div class="span-12 first">
       <fieldset>
