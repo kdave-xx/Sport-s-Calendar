@@ -1,0 +1,26 @@
+<div class="span-10 prepend-7">
+  <% form_for @admin_user_session, :url => admin_admin_user_sessions_path do |f| %>
+    <%= f.error_messages %>
+    <fieldset>
+      <legend>Admin Login</legend>
+      <div class="span-2">
+        <label for="login">Login:</label>
+      </div>
+      <div class="span-7 last">
+        <%= f.text_field :login %>
+      </div>
+
+      <div class="span-2">
+        <label for="password">Password:</label>
+      </div>
+      <div class="span-7 last">
+        <%= f.password_field :password %>
+      </div>
+
+      <div class="prepend-3">
+        <%= f.submit "Sign in", :class => "submit" %>
+      </div>
+
+    </fieldset>
+  <% end %>
+</div>

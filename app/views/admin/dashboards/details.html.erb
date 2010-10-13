@@ -1,0 +1,103 @@
+<hr/>
+<div class="span-24">
+  <h3>Transaction Detail</h3>
+  <div id="ordercontainer123">
+  <div class="span-14 prepend-2">
+    <table>
+      <tr class="comment-box">
+        <th>Item Name</th>
+        <th>Quantity</th>
+        <th>Rate</th>
+        <th>Amount</th>
+      </tr>
+      <tr class="comment-box">
+        <td>Sports Calendar</td>
+        <td><%=h @order.quantity %></td>
+        <td>$10.0</td>
+        <td>$<%=h @order.total_price %></td>
+      </tr>
+    </table>
+    <div class="span-7 prepend-top">
+      <h3>Order Information</h3>
+      <div class="span-6 box">
+        <div class="span-2"><b>Order ID</b></div>
+        <div class="span-4 last"><%=h @order.id %></div>
+        <div class="span-3"><b>Order Detail</b></div>
+        <div class="span-3 last">Sports Calendar</div>
+         
+      </div>
+      <div class="prepend-top"></div>
+      <h3>Billing Address</h3>
+      <div class="span-6 box">
+        <div class="span-2"><b>Adress</b></div>
+        <div class="span-4 last"><%=h @order.address.billing_address %></div>
+        <div class="span-2"><b>City</b></div>
+        <div class="span-4 last"><%=h @order.address.billing_city %></div>
+        <div class="span-2"><b>Country</b></div>
+        <div class="span-4 last"><%=h @order.address.billing_country %></div>
+        <div class="span-2"><b>Post Code</b></div>
+        <div class="span-4 last"><%=h @order.address.billing_pincode %></div>
+      </div>
+    </div>
+    <div class="span-7 prepend-top last">
+      <h3>Customer Information</h3>
+      <div class="span-6 box">
+        <div class="span-2"><b>Name </b></div>
+        <div class="span-4 last"><%=h @order.fullname %></div>
+        <div class="span-2"><b>Email :</b></div>
+        <div class="span-4 last"><%=h @order.email %></div>
+      </div>
+      <div class="prepend-top"></div>
+      <h3>Shipping Address</h3>
+      <div class="span-6 box">
+         <div class="span-2"><b>Adress</b></div>
+         <div class="span-4 last">
+          <% if @order.address.shipping_address.blank? %>
+            <%=h @order.address.billing_address %>
+           <% else %>
+           <%=h @order.address.shipping_address %>
+           <% end %>
+         </div>
+        <div class="span-2"><b>City</b></div>
+        <div class="span-4 last">
+          <% if @order.address.shipping_city.blank? %>
+            <%=h @order.address.billing_city %>
+           <% else %>
+           <%=h @order.address.shipping_city %>
+           <% end %>
+        </div>
+        <div class="span-2"><b>Country</b></div>
+        <div class="span-4 last">
+          <% if @order.address.shipping_country.blank? %>
+            <%=h @order.address.billing_country %>
+           <% else %>
+           <%=h @order.address.shipping_country %>
+           <% end %>
+        </div>
+        <div class="span-2"><b>Post Code</b></div>
+        <div class="span-4 last">
+          <% if @order.address.shipping_pincode.blank? %>
+            <%=h @order.address.billing_pincode %>
+           <% else %>
+           <%=h @order.address.shipping_pincode %>
+           <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <div class="span-6 last">
+    <% form_for @order, :url => admin_update_status_url(@order) do |f| %>
+      <fieldset>
+        <legend>Update Order Status</legend>
+        <%= f.select :status, [["Pending", "Pending"], ["Shipped", "Shipped"], ["Completed", "Completed"], ["Rejected", "Rejected"]] %>
+        <%= f.submit 'Change' %><br/>
+        <div class="prepend-1">
+          <%= image_tag("print.gif") %>&nbsp;<%= link_to_function("Print this Order", "PrintThisPage();return false;") %><br/>
+          <%= image_tag("pdf.gif") %>&nbsp;<%= link_to "Preview Calendar", admin_calendar_path(@calendar), :layout => false,  :popup => ['new_window','height=620,width=430'] %><br/>
+          <%= image_tag("download.gif") %>&nbsp;<%= link_to "Download Image", images_admin_dashboard_url(@order) %><br/>
+        </div>
+      </fieldset>
+    <% end %>
+  </div>
+</div>

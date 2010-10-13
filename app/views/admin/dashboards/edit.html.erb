@@ -1,0 +1,96 @@
+<hr/>
+<div class="span-12 prepend-top first">
+  <% form_for @order, :url => admin_dashboard_path(@order) do |f| %>
+    <%= f.error_messages %>
+    <table class="span-24">
+      <tr>
+        <td>
+
+          <% fields_for :address, @address do |v| %>
+            <div class="span-11">
+              <fieldset>
+                <legend>Edit Your Billing Address</legend>
+
+                <div class="span-4">
+                  <%= v.label :billing_address %>
+                </div>
+                <div class="span-7 last">
+                  <%= v.text_area :billing_address %>
+                </div>
+                <div class="span-4">
+                  <%= v.label :billing_city %>
+                </div>
+                <div class="span-7 last">
+                  <%= v.text_field :billing_city, :class => "text" %>
+                </div>
+
+                <div class="span-4">
+                  <%= v.label :billing_state %>
+                </div>
+                <div class="span-7 last">
+                  <%= v.text_field :billing_state, :class => "text" %>
+                </div>
+                <div class="span-4">
+                  <%= v.label :billing_country %>
+                </div>
+                <div class="span-7 last">
+                  <%= v.select :billing_country, [["United State", "United State"]], :class => "span-8" %>
+                </div>
+                <div class="span-4">
+                  <%= v.label :billing_pincode %>
+                </div>
+                <div class="span-7 last">
+                  <%= v.text_field :billing_pincode, :class => "text" %>
+                </div>
+              </fieldset>
+            </div>
+          </td>
+          <td>
+            <div class="span-11 last">
+              <fieldset>
+                <legend>Edit Your Shipping Address</legend>
+
+                <div class="span-4">
+                  <%= v.label :shipping_address %>
+                </div>
+                <div class="span-7 last">
+                  <%= v.text_area :shipping_address %>
+                </div>
+                <div class="span-4">
+                  <%= v.label :shipping_city %>
+                </div>
+                <div class="span-7 last">
+                  <%= v.text_field :shipping_city, :class => "text" %>
+                </div>
+                <div class="span-4">
+                  <%= v.label :shipping_state %>
+                </div>
+                <div class="span-7 last">
+                  <%= v.text_field :shipping_state, :class => "text" %>
+                </div>
+                <div class="span-4">
+                  <%= v.label :shipping_country %>
+                </div>
+                <div class="span-7 last">
+                  <%= v.select :shipping_country, [["United State", "United State"]], :class => "span-8" %>
+                </div>
+                <div class="span-4">
+                  <%= v.label :shipping_pincode %>
+                </div>
+                <div class="span-7 last">
+                  <%= v.text_field :shipping_pincode, :class => "text" %>
+                </div>
+              </fieldset>
+            </div>
+          </td>
+
+        <% end %>
+
+
+      </tr>
+    </table>
+    <p>
+      <%= f.submit 'Update Order' %>
+    </p>
+  <% end %>
+</div>

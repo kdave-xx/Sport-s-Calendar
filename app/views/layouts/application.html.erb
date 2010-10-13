@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <title>Sports Calendar: <%= controller.action_name %></title>
+    <%= stylesheet_link_tag 'blueprint/screen', 'blueprint/print' %>
+    <%= javascript_include_tag "jquery", "jquery.min", "application" %>
+    <%= javascript_include_tag "jrails" %>
+    <%= yield(:head) %>
+  </head>
+  <body>
+    <div class="container showgrid"><!--container begins (remove showgrid)-->
+      <div class="column span-24">
+        <div class="span-8">
+          <div class="prepand-top">
+            <%= image_tag("logo_holder.jpg") %>
+          </div>
+        </div>
+        <div class="span-9 prepend-7 prepend-top last">
+          <div class="prepend-top">
+            <ul>
+              <li><%= link_to "Home", root_path %></li>
+              <li><%= link_to "Testimonial", testimonial_url %></li>
+              <li><%= link_to "Contact Us", contact_url %></li>
+              <li><%= link_to "Order", new_calendar_path %></li>
+            </ul>
+          </div>
+        </div>
+        <div class="span-24">
+        <%- flash.each do |name, msg| -%>
+          <%= content_tag :div, msg, :class => "#{name}" %>
+        <%- end -%>
+        </div>
+        
+        <%=yield %>
+
+      </div>
+      <div class="clear"></div>
+      <div class="span-24 prepand-top">
+        <p> <a href="index.html">Home</a> | <a href="#">Testimonial</a> | <a href="#">Contact Us</a> |
+          <a href="#">Terms & Conditions</a> | <a href="order1.html">Order</a> <br/>
+          ©2010 Customised Calendar, Bristol unless explicitly acknowledged otherwise </p>
+      </div>
+    </div>
+  </body>
+</html>

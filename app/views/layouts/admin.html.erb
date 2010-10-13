@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <title>Sports Calendar: <%= controller.action_name %></title>
+    <%#= stylesheet_link_tag 'scaffold', 'pagination' %>
+    <%= javascript_include_tag "application" %>
+    <%= stylesheet_link_tag 'blueprint/screen', 'blueprint/print', 'pagination' %>
+    <%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js", "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/jquery-ui.min.js" %>
+    
+  </head>
+  <body>
+    <div class="container showgrid"><!--container begins (remove showgrid)-->
+      <div class="column span-24">
+        <div class="span-8">
+          <div class="prepand-top">
+            <%= image_tag("logo_holder.jpg") %>
+          </div>
+        </div>
+        <div class="span-9 prepend-7 last">
+          <ul>
+            <% if !current_admin %>
+              <!--<li><%#= link_to "Register", new_admin_admin_user_path %></li>-->
+              <li><%= link_to "Log In",  new_admin_admin_user_sessions_path %></li>
+            <% else %>
+              <li><%= link_to "Orders", admin_dashboards_path  %></li>
+              <li><%= link_to "Images", new_admin_dashboard_url %></li>
+              <li><%= link_to "Setttings", admin_settings_url %></li>
+              <li><%= link_to "Logout", admin_admin_user_sessions_path, :method => :delete, :confirm => "Are you sure you want to logout?" %></li>
+            <% end %>
+          </ul>
+           <h2>Administration</h2>
+        </div>
+        <div class="span-24">
+        <% if flash[:notice] -%>
+          <div class="notice"><%= flash[:notice] %></div>
+        <% end -%>
+        </div>
+        
+        <%= yield %>
+        <br clear="all" />
+
+      </div>
+    </div>
+  </body>
+</html>
+

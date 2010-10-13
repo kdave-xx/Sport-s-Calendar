@@ -1,0 +1,22 @@
+<h4>Select Calendar Layout</h4>
+
+<div class="span-5">
+  <img src="../images/photo_at_top_with_border.jpg" alt=""/>  
+  <div class="span"><b>Photo at top with border </b></div>
+  <div class="span prepend-1"><%= layout.radio_button("layout_id", 1, :checked => true) %></div>
+</div>
+<div class="span-5">
+  <img src="../images/photo_at_top_without_border.jpg" alt="" />
+  <div class="span"><b>Photo at top without border</b></div>
+  <div class="span prepend-1"><%= layout.radio_button("layout_id", 2) %></div>
+</div>
+<div class="span-5">
+  <img src="../images/photo_in_middle_with_border.jpg" alt="" /> 
+  <div class="span"><b>Photo in middle with border</b></div>
+  <div class="span prepend-1"><%= layout.radio_button("layout_id", 3) %></div>
+</div>
+<div class="span">
+  <img src="../images/photo_in_middle_without_bor.jpg" alt="" />
+  <div class="span"><b>Photo in middle without border</b></div>
+  <div class="span prepend-1"><%= layout.radio_button("layout_id", 4) %></div>
+</div>

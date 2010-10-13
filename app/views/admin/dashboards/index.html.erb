@@ -1,0 +1,35 @@
+<div class="span-24 prepend-top">
+
+  <table>
+    <caption><em>Listing Orders</em></caption>
+    <thead>
+      <tr class="comment-box">
+        <th >Order ID</th>
+        <th >Customer Name</th>
+        <th >Date</th>
+        <th >Status</th>
+        <th >Action</th>
+      </tr>
+    </thead>
+    <tfoot>
+      <tr>
+        <td>
+          <br />
+          <b><%= will_paginate @orders %></b>
+          <div class="clear"></div>
+        </td>
+      </tr>
+    </tfoot>
+    <tbody>
+      <% @orders.each do |order| %>
+        <tr>
+          <td>09100056</td>
+          <td><%=h order.fullname %></td>
+          <td><%=h order.purchased_at %></td>
+          <td><%=h order.status %></td>
+          <td><%= link_to "View Details", admin_details_url(order) %>&nbsp;|&nbsp;<%= link_to "Edit", edit_admin_dashboard_url(order) %>&nbsp;|&nbsp;<%= link_to "Delete", admin_dashboard_url(order), :confirm => 'Are you sure?', :method => :delete %>&nbsp;</td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

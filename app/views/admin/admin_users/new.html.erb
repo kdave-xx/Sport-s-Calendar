@@ -1,0 +1,12 @@
+<hr/>
+<div class="span-12 prepend-6">
+<% form_for @admin_user, :url => admin_admin_users_path do |f| %>
+  <%= f.error_messages %>
+<fieldset>
+<legend>Enter Your Details</legend>
+  <%= render :partial => "form", :object => f %>
+  <%= f.submit "Register", :class => "submit" %>
+</fieldset>
+<% end %>
+</div>
+

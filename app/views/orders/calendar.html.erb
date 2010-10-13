@@ -1,0 +1,64 @@
+<div id="main">
+  <table>
+    <tr>
+      <td>
+<div id="calendar">
+  <%= link_to image_tag("previous.jpg"), :month => (@date.beginning_of_month-1) %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to image_tag("next.jpg"), :month => (@date.end_of_month+1) %>
+    <% unless @image.blank? %>
+    <%= image_tag @image.image.attachment.url, :width => "400", :height => "270" %>
+    <% else %>
+    <%= image_tag("photo_not_available.jpg", :width => "400", :height => "270") %>
+    <% end %>
+    <div class="monthname">
+    <h2 style="margin-left:35%;">
+    <%=h @date.strftime("%B %Y") %>
+    </h2>
+    </div>
+    <% calendar_for @calendars, :year => @date.year, :month => @date.month do |calendar| %>
+    <%= calendar.head('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday') %>
+    <% calendar.day(:day_method => :published_on) do |date, calendars| %>
+      <%= date.day %>
+    <% end %>
+  <% end %>
+</div>
+      </td>
+      </tr>
+  </table>
+</div>
+
+<% content_for :style do %>
+<% if @calendar.layout_id.eql?(1) || @calendar.layout_id.eql?(2) %>
+ <% if @calendar.style_id.eql?(1) %>
+    <%= stylesheet_link_tag "1red" %>
+  <% else %>
+    <% if @calendar.style_id.eql?(2)  %>
+      <%= stylesheet_link_tag "1green" %>
+    <% else %>
+      <% if @calendar.style_id.eql?(3) %>
+        <%= stylesheet_link_tag "1blue" %>
+      <% else %>
+        <%= stylesheet_link_tag "1black" %>
+      <% end %>
+   <% end %>
+<% end %>
+<% else %>
+  <% if @calendar.style_id.eql?(1) %>
+    <%= stylesheet_link_tag "2red" %>
+  <% else %>
+    <% if @calendar.style_id.eql?(2)  %>
+      <%= stylesheet_link_tag "2green" %>
+    <% else %>
+      <% if @calendar.style_id.eql?(3) %>
+        <%= stylesheet_link_tag "2blue" %>
+      <% else %>
+        <%= stylesheet_link_tag "2black" %>
+      <% end %>
+   <% end %>
+<% end %>
+<% end %>
+<% end %>
+
+
+
+

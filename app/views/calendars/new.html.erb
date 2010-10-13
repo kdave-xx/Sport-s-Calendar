@@ -1,0 +1,106 @@
+<% content_for :head do %>
+  <%= javascript_include_tag "jqModal" %>
+  <%= stylesheet_link_tag "jqModal" %>
+<% end %>
+
+
+<div class="span-24 prepend-top">
+  <div class="comment-box">Sample Image</div>
+</div>
+<div class="span-24 prepend-top">
+  <% form_for @calendar, :html => {:multipart => true}, :class => "inline" do |f| %>
+    <%= f.error_messages %>
+
+    <fieldset>
+      <legend>Calendar Form</legend>
+      <div class="comment-box">
+        <h4>Upload Images Here</h4>
+        <div class="display">
+          <%= link_to_function("Click Here", "$('#toggle').toggle()")  %> To upload images for calendar
+        </div>
+
+
+        <div id="toggle" style="display: none;" >
+          <div class="span-17">
+            <% 12.times do |i| %>
+              <% fields_for :images do |image_form| %>
+                <% month = Date.parse("2011-#{i+1}-01") %>
+                <div class="span-4">
+                  <%= image_form.label :image, "Image For #{month.strftime("%B")}" %>
+                </div>
+                <div class="image_<%= i+1 %> span-10 last">
+                  <%= image_form.file_field :"attachment_#{i+1}", :size => "25" %>&nbsp; | &nbsp;<a href="#" class="jqModal" rel="<%= i+1 %>" id="image_<%= i+1 %>">From Site</a>
+                  <%= hidden_field_tag :"global_image_#{i+1}" %>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="images"></div>
+      <div class="jqmWindow" id="dialog">
+        <a href="#" class="jqmClose prepend-14"><%= image_tag("cross.png") %></a>
+        <br />
+        <%= render :partial => "images", :layout => false %>
+        <%= hidden_field_tag :page_id %>
+      </div>
+
+      <div class="comment-box prepend-top">
+        <%= render :partial => 'layout', :object => f %>
+      </div>
+
+      <div class="clear"></div>
+
+      <div class="comment-box">
+        <%= render :partial => 'style', :object => f %>
+      </div>
+
+    </fieldset>
+  <div class="span-24">
+    <a href="#" class="button">Preview Your Claendar >>>>> </a>
+    <div class="prepend-21">
+      <%= f.submit 'Continue' %>
+    </div>
+  </div>
+  <% end %>
+</div>
+
+
+
+<script type="text/javascript">
+  $(function(){
+    $(document).ready(function() {
+      $('#dialog').jqm();
+    });
+    // Sending page id to the jqModal for selecting Image from site
+    $(".jqModal").click(function(){
+      $("#dialog #page_id").val($(this).attr("rel"));
+    });
+    // End
+
+    <%#*$('.chk').click(function(){%>
+      <%#*$('#dialog').jqmHide();%>
+    <%#*});%>
+
+    $("input[name='global_images[]']").click(function(){
+      if(this.checked==true)
+      {
+        $('#dialog').jqmHide();
+        var page_id = $("#dialog #page_id").val();
+        // For Disabling the file field after selecting image from site defaults
+        var ele = document.getElementById("images_attachment_"+page_id)
+        ele.disabled = true;
+        // End
+        // Updating the div after selecting the image from site
+        $('#image_'+page_id).html("Selected")
+        // End 
+        $("#global_image_"+page_id).val($(this).val());
+        // remove all checked check box tag & make them uncheck for every click on from site
+        $("input[name='global_images[]']").removeAttr('checked');
+        // End 
+      }        
+    });
+  });
+</script>
