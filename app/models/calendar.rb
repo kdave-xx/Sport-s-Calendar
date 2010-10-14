@@ -23,7 +23,7 @@ class Calendar < ActiveRecord::Base
        }
    }
    # set read permissions on the file
-   File.chmod(0644, bundle_filename)
+   File.chmod(777, bundle_filename)
    # save the object
    zip_path
  end
