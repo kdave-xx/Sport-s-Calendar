@@ -40,6 +40,9 @@ class OrdersController < ApplicationController
         if @order.purchase
            flash[:notice] = "Thank You!"
            redirect_to calendar_order_url(@order)
+        else
+          flash[:notice] = "failure"
+          render :action => :new
         end
       end
     end
