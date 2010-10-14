@@ -7,7 +7,8 @@ class Order < ActiveRecord::Base
   has_many :transactions, :class_name => "OrederTransaction"
 
   validates_presence_of :fname, :lname, :email
- 
+  validates_format_of :email, :with =>  /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i
+  
   validate_on_create :validate_card
 
   def fullname
