@@ -112,4 +112,11 @@ class Admin::DashboardsController < ApplicationController
       end
     end
 
+    def delete_image
+      @image = Image.find(params[:id])
+      @image.update_attribute(:is_admin, false)
+        flash[:notice] = "Image was successfully removed"
+        redirect_to new_admin_dashboard_url
+    end
+
 end

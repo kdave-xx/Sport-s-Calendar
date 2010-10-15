@@ -3,8 +3,11 @@
     <legend>View Images</legend>
     <div class="comment-box">
       <h4>View Images Here</h4>
-        <% @global_images.each do |image| %>
-        <%= image_tag image.attachment.url, :width => "100", :height => "100"  %>
+      <% @global_images.each do |image| %>
+        <%= link_to image_tag(image.attachment.url(:medium)), image.attachment.url, :rel => "example2" %>
+        <div id="delete">
+          <%= link_to image_tag("cross.png"), admin_delete_image_url(image) %>
+        </div>
       <% end %>
     </div>
     <div class="comment-box">
@@ -39,4 +42,16 @@
 </div>
 
 
+<script>
+  $(document).ready(function(){
+    //Examples of how to assign the ColorBox event to elements
 
+    $("a[rel='example2']").colorbox({transition:"fade"});
+
+    //Example of preserving a JavaScript event for inline calls.
+    $("#click").click(function(){
+      $('#click').css({"background-color":"#f00", "color":"#fff", "cursor":"inherit"}).text("Open this window again and this message will still be here.");
+      return false;
+    });
+  });
+</script>

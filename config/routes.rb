@@ -45,6 +45,7 @@ ActionController::Routing::Routes.draw do |map|
     admin.update_status '/dashboards/:id', :controller => "dashboards", :action => "update_status"
     admin.update_shipping '/update_setting/:id', :controller => "dashboards", :action => "update_shipping"
     admin.update_password '/update_password/:id', :controller => "dashboards", :action => "update_password"
+    admin.delete_image '/delete_image/:id', :controller => "dashboards", :action => "delete_image"
   end
 
   # You can have the root of your site routed with map.root -- just remember to delete public/index.html.
