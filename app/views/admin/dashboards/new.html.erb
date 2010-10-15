@@ -5,7 +5,7 @@
       <h4>View Images Here</h4>
       <% @global_images.each do |image| %>
         <%= link_to image_tag(image.attachment.url(:medium)), image.attachment.url, :rel => "example2" %>
-        <div id="delete">
+        <div id="delete" style="display:none;">
           <%= link_to image_tag("cross.png"), admin_delete_image_url(image) %>
         </div>
       <% end %>

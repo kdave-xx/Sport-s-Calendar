@@ -5,7 +5,7 @@ class Image < ActiveRecord::Base
   named_scope :global, :conditions => {:is_admin => true}
 
   has_attached_file :attachment,
-                    :styles => { :small => '70x70>',:medium=>'87x87',:original => "800x600>"},
+                    :styles => { :small => '70x70>',:medium=>'100x120',:original => "600x500>"},
                     :url => "/photos/:id/:style/:basename.:extension",
                     :path => ":rails_root/public/photos/:id/:style/:basename.:extension"
   validates_attachment_content_type :attachment,
