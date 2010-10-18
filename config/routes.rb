@@ -7,6 +7,8 @@ ActionController::Routing::Routes.draw do |map|
   map.contact 'contactus', :controller => "welcome", :action => "contactus"
   map.testimonial 'testimonial', :controller => "welcome", :action => "testimonial"
   map.calendar '/calendars/:calendar_id/calendar', :controller => "orders", :action => "calendar"
+  map.preview_calendar '/preview_calendars/', :controller => "calendars", :action => "preview_calendar"
+  map.get_month '/get_month/', :controller => "calendars", :action => "get_month"
   # The priority is based upon order of creation: first created -> highest priority.
 
   # Sample of regular route:

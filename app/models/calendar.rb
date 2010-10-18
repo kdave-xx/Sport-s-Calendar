@@ -6,6 +6,8 @@ class Calendar < ActiveRecord::Base
   has_many :images, :through => :calendar_images
   has_one :order
 
+   attr_accessor :start_month
+
   # create a zipped archive file of all the photos in an album
   def bundle(name = "Picture", set = self.id)
    bundle_filename = "#{RAILS_ROOT}/public/photos/#{self.id}/#{set}-#{name}.zip"

@@ -1,0 +1,78 @@
+<div class="span-24 prepend-top">
+  <% val = @month.to_i %>
+<%# 12.times do |i| %>
+  <% for i in val..12 %>
+    <% fields_for :images do |image_form| %>
+      <% month = Date.parse("2011-#{val}-01") %>
+      <div class="span-4"><%= image_form.label :image, "Image For #{month.strftime("%B")}" %></div>
+      <div class="span-4" id="select_<%= i %>"><img src="images/image5.jpg" width="121" height="92" /></div>
+      <div class="image_<%= i %> span-4">
+        <a href="#" class="jqModal black" rel="<%= i %>" id="image_<%= i %>">Choose images</a> <%#= image_form.file_field :"attachment_#{i+1}", :size => "25" %>
+        <%= hidden_field_tag :"global_image_#{i}" %>
+      </div>
+    <% end %>
+    <% val = val+1 %>
+  <% end %>
+
+
+<% for i in 1..@month.to_i-1  %>
+  <% fields_for :images do |image_form| %>
+    <% month = Date.parse("2011-#{i}-01") %>
+    <div class="span-4"><%= image_form.label :image, "Image For #{month.strftime("%B")}" %></div>
+    <div class="span-4" id="select_<%= i %>"><img src="images/image5.jpg" width="121" height="92" /></div>
+    <div class="image_<%= i %> span-4">
+      <a href="#" class="jqModal black" rel="<%= i %>" id="image_<%= i %>">Choose images</a>
+      <%= hidden_field_tag :"global_image_#{i}" %>
+    </div>
+  <% end %>
+<% end %>
+</div>
+
+<script type="text/javascript">
+  $(function(){
+    $(document).ready(function() {
+      $('#dialog').jqm();
+    });
+    // Sending page id to the jqModal for selecting Image from site
+    $(".jqModal").click(function(){
+      $("#dialog #page_id").val($(this).attr("rel"));
+    });
+    // End
+
+    $("input[name='global_images[]']").click(function(){
+      if(this.checked==true)
+      {
+
+        $('#dialog').jqmHide();
+        var page_id = $("#dialog #page_id").val();
+        // For Disabling the file field after selecting image from site defaults
+        var image_id = this.value
+        // Updating the div after selecting the image from site
+        var ele = document.getElementById("image_"+page_id)
+        ele.disabled = true;
+        $('#image_'+page_id).html("change");
+        // End
+        //var ele1 = document.getElementById("delete_"+image_id)
+        //ele1.style.display = "block"; //css("display", "block");
+        $("#display_"+image_id).clone().appendTo("#select_"+page_id);
+        jQuery.ajax({
+          type: "get",
+          url: "<%= preview_calendar_path %>",
+          //  dataType: "json",
+          data: ({image_value : this.value, page_value : page_id}),
+          success: function(calendar) {
+
+          }
+        });
+
+        $("#global_image_"+page_id).val($(this).val());
+
+        // remove all checked check box tag & make them uncheck for every click on from site
+        $("input[name='global_images[]']").removeAttr('checked');
+        // End
+      }
+    });
+  });
+</script>
+
+

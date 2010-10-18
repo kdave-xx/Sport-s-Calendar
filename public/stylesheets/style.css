@@ -1,0 +1,210 @@
+@charset "utf-8";
+/* CSS Document */
+
+body {
+	width:100%;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	line-height:24px;
+	margin:0 auto;
+}
+#header {
+	width:100%;
+	background:#ca1623 url(../images/header.jpg) repeat-y;
+	height:170px;
+	padding:0px;
+	margin:0px;
+}
+.header {
+	width:960px;
+	margin:0 auto;
+}
+.lefthead {
+	width:560px;
+	padding:0px;
+	height:auto;
+	margin:10px 0 0 0;
+	float:left;
+}
+.choose {
+	width:121px;
+	height:45px;
+	padding:0px;
+	padding:0 10px 0 210px;
+	float:left;
+}
+.sport {
+	width:214px;
+	height:82px;
+	padding:0px;
+	margin:0px;
+	float:right;
+}
+.seeur {
+	width:464px;
+	height:27px;
+	float:left;
+	padding:0px;
+	margin:0px;
+}
+.custom {
+	width:176px;
+	margin:10px 0 0 0;
+	float:left;
+}
+.rightcornor {
+	width:228px;
+	height:182px;
+	top:0%;
+	position:absolute;
+	z-index:9999px;
+	right:50px;
+}
+.leftclick {
+	width:148px;
+	top:16%;
+	position: absolute;
+	z-index:1px;
+	left:240px;
+}
+#container {
+	width:960px;
+	margin:0 auto;
+}
+.contentcntr {
+	width:340px;
+	padding-left:290px;
+	float:left;
+}
+.contentcntr h1 {
+	color: #000000;
+	font-size:14px;
+	font-weight:bold;
+}
+.contentcntr p {
+	font-size:12px;
+	color:#000000;
+	padding:5px 0 0 0;
+	margin:0px;
+	line-height:20px;
+}
+.getyour {
+	float:left;
+}
+.image {
+	float:left;
+	width:132px;
+	height:458px;
+}
+.rightcoloum {
+	width:140px;
+	float:left;
+	padding-top:40px;
+}
+.rightcoloum ul {
+	list-style: decimal;
+}
+.rightcoloum ul li {
+	color:#FF0000;
+	font-weight:bold;
+	font-size:14px;
+	text-align: center;
+}
+.that {
+	font-size:24px;
+	color:#FF0000;
+	text-transform:uppercase;
+	text-align:center;
+	font-weight:bold;
+}
+.rightcoloum p {
+	font-weight:bold;
+	color:#FF0000;
+	text-align:center;
+	font-size:14px;
+}
+.righttopless {
+	width:50px;
+	float:left;
+	padding-top:200px;
+}
+.rightdown {
+	width:100px;
+	height:182px;
+	top:85%;
+	position:absolute;
+	z-index:9999px;
+	right:80px;
+}
+.nav {
+	float:left;
+	padding-left:240px;
+}
+.nav ul {
+	float:left;
+	margin:0px;
+	list-style:none;
+}
+.nav ul li {
+	float:left;
+	height:40px;
+	padding:0 5px;
+	color:#ffffff;
+}
+.nav ul li a {
+	color: #FFFFFF;
+	display:block;
+	font:13px Arial, sans-serif;
+	padding:9px 5px 10px;
+	font-weight:bold;
+	text-transform:uppercase;
+	text-decoration:none;
+}
+.nav ul li a:hover {
+	text-decoration:underline;
+}
+/*Inside page */
+
+.headerin{
+	width:100%;
+	padding:0px; 
+	margin:0px;
+	}
+.nav_in {
+	float:right;
+	}
+.nav_in ul {
+	float:left;
+	margin:0px;
+	list-style:none;
+}
+.nav_in ul li {
+	float:left;
+	height:40px;
+	padding:0 5px;
+	color:#ffffff;
+}
+.nav_in ul li a {
+	color: #FFFFFF;
+	display:block;
+	font:13px Arial, sans-serif;
+	padding:9px 5px 10px;
+	font-weight:bold;
+	text-transform:uppercase;
+	text-decoration:none;
+}
+.nav_in ul li a:hover {
+	text-decoration:underline;
+}
+#footer{
+	width:100%;
+	background:#ca1623 url(../images/header.jpg) repeat-y;
+	height:80px;
+	padding:0px;
+	margin:0px;
+}
+a{color:#FFFFFF; text-decoration:none;}
+.white{color:#FFFFFF;}
+.yellow{color:#FFFF00;}
+.black{color:#000000;}
+.black:hover{ text-decoration:underline;}

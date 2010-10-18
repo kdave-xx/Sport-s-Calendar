@@ -1,0 +1,33 @@
+<div id="main">
+  <table>
+    <tr>
+      <td>
+<div id="calendar">
+  <%= link_to image_tag("previous.jpg"), :month => (@date.beginning_of_month-1) %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to image_tag("next.jpg"), :month => (@date.end_of_month+1) %>
+   <% unless @image.blank? %>
+    <%= image_tag @image.attachment.url, :width => "400", :height => "270" %>
+    <% else %>
+    <%= image_tag("photo_not_available.jpg", :width => "400", :height => "270") %>
+    <% end %>
+    <%# unless @image.blank? %>
+    <%#= image_tag @image.image.attachment.url, :width => "400", :height => "270" %>
+    <%# else %>
+    <%#= image_tag("photo_not_available.jpg", :width => "400", :height => "270") %>
+    <%# end %>
+    <div class="monthname">
+    <h2 style="margin-left:35%;">
+    <%=h @date.strftime("%B %Y") %>
+    </h2>
+    </div>
+    <% calendar_for @calendars, :year => @date.year, :month => @date.month do |calendar| %>
+    <%= calendar.head('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday') %>
+    <% calendar.day(:day_method => :published_on) do |date, calendars| %>
+      <%= date.day %>
+    <% end %>
+  <% end %>
+</div>
+      </td>
+      </tr>
+  </table>
+</div>

@@ -3,104 +3,56 @@
   <%= stylesheet_link_tag "jqModal" %>
 <% end %>
 
+<div class="column span-24">
 
-<div class="span-24 prepend-top">
-  <div class="comment-box">Sample Image</div>
-</div>
-<div class="span-24 prepend-top">
-  <% form_for @calendar, :html => {:multipart => true}, :class => "inline" do |f| %>
-    <%= f.error_messages %>
+  <div class="span-24 prepend-top">
+    <% form_for @calendar, :html => {:multipart => true}, :class => "inline" do |f| %>
+      <%= f.error_messages %>
 
-    <fieldset>
-      <legend>Calendar Form</legend>
-      <div class="comment-box">
-        <h4>Upload Images Here</h4>
-        <div class="display">
-          <%= link_to_function("Click Here", "$('#toggle').toggle()")  %> To upload images for calendar
+      <fieldset>
+        <legend>Calendar Form</legend>
+       
+        <div class="span-8 first">Choose Your Start Month</div>
+        <div class="span-8 append-6 last">
+          <%= f.select :start_month, [["January-#{@year}", "1"], ["Febuary-#{@year}", "2"], ["March-#{@year}", "3"], ["April-#{@year}","4"], ["May-#{@year}", "5"], ["June-#{@year}", "6"], ["July-#{@year}", "7"], ["August-#{@year}", "8"], ["September-#{@year}", "9"], ["October-#{@year}", "10"], ["November-#{@year}", "11"], ["December-#{@year}", "12"]], :class => "span-8" %>
         </div>
 
+        <div class="span-24 prepend-top"><h4>Choose images for you Calendar</h4> </div>
+        <div id="toggle">  </div>
 
-        <div id="toggle" style="display: none;" >
-          <div class="span-17">
-            <% 12.times do |i| %>
-              <% fields_for :images do |image_form| %>
-                <% month = Date.parse("2011-#{i+1}-01") %>
-                <div class="span-4">
-                  <%= image_form.label :image, "Image For #{month.strftime("%B")}" %>
-                </div>
-                <div class="image_<%= i+1 %> span-10 last">
-                  <%= image_form.file_field :"attachment_#{i+1}", :size => "25" %>&nbsp; | &nbsp;<a href="#" class="jqModal" rel="<%= i+1 %>" id="image_<%= i+1 %>">From Site</a>
-                  <%= hidden_field_tag :"global_image_#{i+1}" %>
-                </div>
-              <% end %>
-            <% end %>
-          </div>
+        <div id="images"></div>
+        <div class="jqmWindow" id="dialog">
+          <a href="#" class="jqmClose prepend-14"><%= image_tag("cross.png") %></a>
+          <br />
+          <%= render :partial => "images", :layout => false %>
+          <%= hidden_field_tag :page_id %>
         </div>
-        <div class="clear"></div>
+
+      </fieldset>
+      <div class="span-24">
+        <%= link_to "Preview Your Claendar >>>>>", preview_calendar_url, :class => "button", :layout => false,   :popup => ['new_window','height=620,width=430'] %>
+        <div class="prepend-21">
+          <%= f.submit 'Continue' %>
+        </div>
       </div>
-
-      <div id="images"></div>
-      <div class="jqmWindow" id="dialog">
-        <a href="#" class="jqmClose prepend-14"><%= image_tag("cross.png") %></a>
-        <br />
-        <%= render :partial => "images", :layout => false %>
-        <%= hidden_field_tag :page_id %>
-      </div>
-
-      <div class="comment-box prepend-top">
-        <%= render :partial => 'layout', :object => f %>
-      </div>
-
-      <div class="clear"></div>
-
-      <div class="span-22 comment-box">
-        <%= render :partial => 'style', :object => f %>
-      </div>
-
-    </fieldset>
-  <div class="span-24">
-    <a href="#" class="button">Preview Your Claendar >>>>> </a>
-    <div class="prepend-21">
-      <%= f.submit 'Continue' %>
-    </div>
+    <% end %>
   </div>
-  <% end %>
+  <div class="clear"></div>
 </div>
-
 
 
 <script type="text/javascript">
   $(function(){
-    $(document).ready(function() {
-      $('#dialog').jqm();
+    $('#calendar_start_month').change(function(){
+      jQuery.ajax({
+        type: "get",
+        url: "<%= get_month_path %>",
+        //dataType: "json",
+        data: ({text_value : this.value}),
+        success: function(calendar) {
+        
+        }
+      });
     });
-    // Sending page id to the jqModal for selecting Image from site
-    $(".jqModal").click(function(){
-      $("#dialog #page_id").val($(this).attr("rel"));
-    });
-    // End
-
-    <%#*$('.chk').click(function(){%>
-      <%#*$('#dialog').jqmHide();%>
-    <%#*});%>
-
-    $("input[name='global_images[]']").click(function(){
-      if(this.checked==true)
-      {
-        $('#dialog').jqmHide();
-        var page_id = $("#dialog #page_id").val();
-        // For Disabling the file field after selecting image from site defaults
-        var ele = document.getElementById("images_attachment_"+page_id)
-        ele.disabled = true;
-        // End
-        // Updating the div after selecting the image from site
-        $('#image_'+page_id).html("Selected")
-        // End 
-        $("#global_image_"+page_id).val($(this).val());
-        // remove all checked check box tag & make them uncheck for every click on from site
-        $("input[name='global_images[]']").removeAttr('checked');
-        // End 
-      }        
-    });
-  });
+   });
 </script>
