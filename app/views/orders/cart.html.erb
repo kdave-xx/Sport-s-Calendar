@@ -1,51 +1,57 @@
-<div class="span-24 prepend-top">
-  <div class="comment-box">Sample Image</div>
-  <% form_tag  new_calendar_order_url(@calendar), :class => "inline", :method => 'GET' do %>
-    <fieldset>
-      <legend>Your Shopping Cart</legend>
-      <table id="mytable">
-        <tr class="comment-box">
-          <th>Preview</th>
-          <th>Description</th>
-          <th>Options</th>
-          <th>Each</th>
-          <th>Delivery Charge</th>
-          <th>Quantity</th>
-          <th>Total Price</th>
-        </tr>
-        <tr id="secondrow" class="comment-box">
-          <td><%= image_tag("image1.jpg", :width => "100", :height => "100") %></td>
-          <td><%= link_to "2011 Calendar by Loreum Ipsum", calendar_url(@calendar), :layout => false,  :popup => ['new_window','height=620,width=430']%></td>
-          <td><b>Start Month</b>:January 2011</td>
-          <td id="price"><%=h @shipping.price %></td>
-          <td id="delivery_charge"><%=h @shipping.delivery_charge %></td>
-          <td><input type="text" id="quantity" class="span-1" name="quantity" /></td>
-          <td>$<input type="text" id="total_price" class="span-2" name="total_price" readonly=true /></td>
-        </tr>
-      </table>
-    </fieldset>
-   <div class="prepend-21">
-     <input type="Submit" id="submit" value="Checkout" disabled="true" />
-    </div>
-  <% end %>
+<div class="column span-24">
+  <div class="span-24 prepend-top">
+    <% form_tag  new_calendar_order_url(@calendar), :class => "inline", :method => 'GET' do %>
+
+      <h2>Your Shopping Cart</h2>
+      <div class="span-24 formbg mgb">
+        <table class="pd">
+          <tr class="formbg1">
+            <th width="15%">Preview</th>
+            <th width="22%">Description</th>
+            <th width="21%">Options</th>
+            <th width="7%">Each</th>
+            <th width="14%">Delivery Charge</th>
+            <th width="9%">Quantity</th>
+            <th width="14%">Total Price</th>
+          </tr>
+          <tr class="comment">
+            <td height="143"><%= image_tag("image1.jpg", :width => "100", :height => "100") %></td>
+            <td><%= link_to "2011 Calendar by Loreum Ipsum", calendar_url(@calendar), :layout => false,  :popup => ['new_window','height=620,width=430']%></td>
+            <td><b>Start Month</b>:January 2011</td>
+            <td id="price"><%=h @shipping.price %></td>
+            <td id="delivery_charge"><%=h @shipping.delivery_charge %></td>
+            <td><input type="text" id="quantity" class="span-1" name="quantity" /></td>
+            <td>$<input type="text" id="total_price" class="span-2" name="total_price" readonly=true /></td>
+          </tr>
+        </table>
+      </div>
+      <div class="span-5 prepend-18">
+        <div class="button">
+          <input type="Submit" id="submit" class="button_in" value="Checkout" disabled="true" />
+        </div>
+      </div>
+
+    <% end %>
+  </div>
+  <div class="clear"></div>
 </div>
 
 <script type="text/javascript">
-      $(document).ready(function() {
-        $('#quantity').blur(function(){
-          var ele = document.getElementById("submit");
-          if($('#quantity').val() == "") {
-            alert("Enter Quantity");
-            $('#quantity').focus();
-          }
-          else {
-            var price = $('.comment-box #price').html();
-            var charge = parseFloat($('.comment-box #delivery_charge').html());
-            var tol = $("#quantity").val()*price;
-            $('#total_price').val(tol+charge);
-            ele.disabled = false
-          }
-        });
-      });
-    </script>
+  $(document).ready(function() {
+    $('#quantity').blur(function(){
+      var ele = document.getElementById("submit");
+      if($('#quantity').val() == "") {
+        alert("Enter Quantity");
+        $('#quantity').focus();
+      }
+      else {
+        var price = $('.comment #price').html();
+        var charge = parseFloat($('.comment #delivery_charge').html());
+        var tol = $("#quantity").val()*price;
+        $('#total_price').val(tol+charge);
+        ele.disabled = false
+      }
+    });
+  });
+</script>
 

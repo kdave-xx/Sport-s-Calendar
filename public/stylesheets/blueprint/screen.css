@@ -25,11 +25,14 @@ a img {border:none;}
 /* typography.css */
 html {font-size:100.01%;}
 body {font-size:75%;color:#222;background:#fff;font-family:"Helvetica Neue", Arial, Helvetica, sans-serif;}
-h1, h2, h3, h4, h5, h6 {font-weight:normal;color:#111;}
-h1 {font-size:5em;line-height:1;margin-bottom:0.5em; margin-top:0.5em;}
-h2 {font-size:2.0em;margin-bottom:0.75em; color:#FF0000}
-h3 {font-size:1.7em;line-height:1;margin-bottom:1em;}
-h4 {font-size:1.2em;line-height:1.25;margin-bottom:1.25em;}
+h2 {font-weight:bold;font-size: 18px; color:#999999;}
+h4 {font-weight:bold;font-size: 16px; color: #666666; border-bottom:1px solid  #E98B99; padding-bottom:10px; width:auto;}
+h3 {font-weight:bold;font-size: 16px; color: #666666; width:auto;}
+/*h1, h2, h3, h4, h5, h6 {font-weight:normal;color:#111;}*/
+/*h1 {font-size:5em;line-height:1;margin-bottom:0.5em; margin-top:0.5em;}*/
+/*h2 {font-size:2.0em;margin-bottom:0.75em; color:#FF0000}*/
+/*h3 {font-size:1.7em;line-height:1;margin-bottom:1em;}*/
+/*h4 {font-size:1.2em;line-height:1.25;margin-bottom:1.25em; font-weight:bold;}*/
 h5 {font-size:1em;font-weight:bold;margin-bottom:1.5em;}
 h6 {font-size:1em;font-weight:bold;}
 h1 img, h2 img, h3 img, h4 img, h5 img, h6 img {margin:0;}
@@ -77,14 +80,14 @@ caption {background:#eee;}
 
 /* forms.css */
 label {font-weight:bold;}
-fieldset {padding:1.4em;margin:0 0 1.5em 0;border:1px solid #ccc;}
-legend {font-weight:bold;font-size:1.2em;}
+fieldset {padding:0.4em;margin:0 0 1.5em 0;}
+legend {font-weight:bold;font-size: 18px; color:#999999;}
 input[type=text], input[type=password], input.text, input.title, textarea, select {background-color:#fff;border:1px solid #bbb;}
 input[type=text]:focus, input[type=password]:focus, input.text:focus, input.title:focus, textarea:focus, select:focus {border-color:#666;}
 input[type=text], input[type=password], input.text, input.title, textarea, select {margin:0.5em 0;}
 input.text, input.title {width:300px;padding:5px;}
 input.title {font-size:1.5em;}
-textarea {width:250px;height:75px;padding:5px;}
+textarea {width:300px;height:75px;padding:5px;}
 input[type=checkbox], input[type=radio], input.checkbox, input.radio {position:relative;top:.25em;}
 form.inline {line-height:3;}
 form.inline p {margin-bottom:0;}
@@ -109,20 +112,20 @@ form.inline p {margin-bottom:0;}
 .span-6 {width:230px;}
 .span-7 {width:270px;}
 .span-8 {width:310px;}
-.span-9 {width:350px;}
-.span-9 ul {
+.span-8 ul {
 	margin:5px;
 	padding:0px;
 	display:inline;
 	list-style:none;
 }
-.span-9 li {
+.span-8 li {
 	display:inline;
 	list-style:none;
 	margin:10px;
 	padding:0px;
 	float:left;
 }
+.span-9 {width:350px;}
 .span-10 {width:390px;}
 .span-11 {width:430px;}
 .span-12 {width:470px;}
@@ -263,7 +266,7 @@ input.span-24, textarea.span-24 {width:938px;}
 .push-1, .push-2, .push-3, .push-4, .push-5, .push-6, .push-7, .push-8, .push-9, .push-10, .push-11, .push-12, .push-13, .push-14, .push-15, .push-16, .push-17, .push-18, .push-19, .push-20, .push-21, .push-22, .push-23, .push-24 {float:right;position:relative;}
 .prepend-top {margin-top:1.5em;}
 .append-bottom {margin-bottom:1.5em;}
-.box {padding:1.5em;margin-bottom:1.5em;background:#E5ECF9;}
+.box {padding:1.5em;margin-bottom:1.5em;}
 .comment-box {padding:1.5em;margin-bottom:1.5em;background:#E5ECF9;}
 .image-box {padding:1.5em;margin-bottom:1.5em;background:#E5ECF9; height: 300px;}
 hr {background:#ddd;color:#ddd;clear:both;float:none;width:100%;height:.1em;margin:0 0 1.45em;border:none;}
@@ -277,7 +280,7 @@ hr.space {background:#fff;color:#fff;visibility:hidden;}
 a.button, button {
   display:block;
   float:left;
-  margin: 0 0.5em 0.7em 0;
+  margin: 0.0em 0.5em 0.7em 0;
   padding:0px 10px 5px 7px;   /* Links */
   
   border:1px solid #dedede;
@@ -299,78 +302,89 @@ button:hover, a.button:hover{
   color:#336699;
 }
 
-
-/*--------------------------------Style Color ----------------------------------*/
-.colbox1_1{
+.colbox1_1	{
 width:22px;
 height:22px;
 margin-right:1px;
 background-color:#ac0481;
+
 }
+
 .colbox1_2	{
 width:22px;
 height:22px;
 margin-right:1px;
 background-color:#ff0084;
+
 }
 .colbox1_3	{
 width:22px;
 height:22px;
 margin-right:1px;
 background-color:#f677c4;
+
 }
+
 .colbox2_1	{
 width:22px;
 height:22px;
 margin-right:1px;
 background-color:#007d08;
+
 }
 .colbox2_2	{
 width:22px;
 height:22px;
 margin-right:1px;
 background-color:#3bb000;
+
 }
 .colbox2_3	{
 width:22px;
 height:22px;
 margin-right:1px;
 background-color:#85c329;
+
 }
 .colbox3_1	{
 width:22px;
 height:22px;
 margin-right:1px;
 background-color:#003366;
+
 }
 .colbox3_2	{
 width:22px;
 height:22px;
 margin-right:1px;
 background-color:#4f789f;
+
 }
 .colbox3_3	{
 width:22px;
 height:22px;
 margin-right:1px;
 background-color:#4f9cef;
+
 }
 .colbox4_1	{
 width:22px;
 height:22px;
 margin-right:1px;
 background-color:#111111;
+
 }
 .colbox4_2	{
 width:22px;
 height:22px;
 margin-right:1px;
 background-color:#464646;
+
 }
 .colbox4_3	{
 width:22px;
 height:22px;
 margin-right:1px;
 background-color:#7D7D7D;
+
 }
-/*-------------------------------End---------------------------------------------*/

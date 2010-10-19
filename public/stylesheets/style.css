@@ -8,6 +8,8 @@ body {
 	line-height:24px;
 	margin:0 auto;
 }
+
+
 #header {
 	width:100%;
 	background:#ca1623 url(../images/header.jpg) repeat-y;
@@ -206,5 +208,18 @@ body {
 a{color:#FFFFFF; text-decoration:none;}
 .white{color:#FFFFFF;}
 .yellow{color:#FFFF00;}
-.black{color:#000000;}
-.black:hover{ text-decoration:underline;}
+.black{float:right; color:#a77777;
+font-size:12px;
+font-weight:bold;}
+.black:hover{ text-decoration:underline; color:#a77777;}
+.button{background:url(../images/button.png) no-repeat; width:166px; height:60px; color:#FFFFFF; font-weight:bold; text-align:center;}
+.button_in{text-align:center; background:none; border:none; color:#FFFFFF; font-weight:bold; font-size:24px; padding-top:6px;}
+.pd{padding:10px;}
+.formbg{ border:1px solid #DFDFDF; background:#f7ebec;}
+.formbg1{ border:1px solid #DFDFDF; background:#d8c6c6;}
+.field { -moz-box-shadow: -1px -1px 2px #8a8a8a; box-shadow: -1px -1px 2px #8a8a8a; height:28px; float:left; background:#fff; margin-top:1px; -moz-border-radius: 5px; border-radius: 5px;
+-webkit-border-radius: 5px; border:1px solid #ccc; -webkit-box-shadow: -1px -1px 2px #8a8a8a; }
+a.links_in{color: #be6b6a; font-weight:bold; font-size:14px; padding:0px; margin:0px; height:20px;}
+a.links_in:hover{ text-decoration:underline;}
+.smallfont{font-size: 12px; color: #666666; width:auto; padding:0px; margin:0px;}
+.mgb{margin-bottom:10px;}

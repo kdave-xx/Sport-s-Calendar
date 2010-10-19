@@ -1,9 +1,9 @@
-<div class="span-24 prepend-top">
-  <div class="comment-box">Sample Image</div>
-  <fieldset>
-    <legend>Your Item</legend>
+<div class="column span-24">
+  <div class="span-24 prepend-top">
+
+    <h2>Your Item</h2>
     <table>
-      <tr class="comment-box">
+      <tr class="formbg">
         <th>Preview</th>
         <th>Description</th>
         <th>Options</th>
@@ -12,7 +12,7 @@
         <th>Quantity</th>
         <th>Total Price</th>
       </tr>
-      <tr class="comment-box">
+      <tr>
         <td><%= image_tag("image1.jpg", :width => "100", :height => "100") %></td>
         <td><%= link_to "2011 Calendar by Loreum Ipsum", calendar_url(@calendar), :layout => false,  :popup => ['new_window','height=620,width=430']%></td>
         <td><b>Start Month</b>:January 2011</td>
@@ -22,159 +22,166 @@
         <td>$<%=h session[:total_price] %></td>
       </tr>
     </table>
-  </fieldset>
 
-  <% form_for(@order, :url => calendar_order_url) do |f| %>
-    <%#= f.error_messages %>
-    <%= error_messages_for :order, :object => [@order, @address] %>
 
-    <div class="span-12 first">
-      <fieldset>
-        <legend>Your Detail</legend>
-        <div class="span-3">
-          <label for="name">First Name</label>
-        </div>
-        <div class="span-8 last">
-          <%= f.text_field :fname, :class => "text"  %>
-        </div>
-        <div class="span-3">
-          <label for="name">Last Name</label>
-        </div>
-        <div class="span-8 last">
-          <%= f.text_field :lname, :class => "text" %>
-        </div>
-        <div class="span-3">
-          <label for="email">Email</label>
-        </div>
-        <div class="span-8 last">
-          <%= f.text_field :email, :class => "text" %>
-        </div>
-        <% fields_for :address, @address do |v| %>
+    <% form_for(@order, :url => calendar_order_url) do |f| %>
+      <%= error_messages_for :order, :object => [@order, @address] %>
+
+      <div class="span-12 first formbg">
+        <fieldset>
+          <legend>Your Detail</legend>
           <div class="span-3">
-            <label for="billing_address">Billing Address</label>
+            <label for="name">First Name</label>
           </div>
           <div class="span-8 last">
-            <%= v.text_area :billing_address %>
+            <%= f.text_field :fname, :class => "text"  %>
           </div>
           <div class="span-3">
-            <label for="city">City</label>
+            <label for="name">Last Name</label>
           </div>
           <div class="span-8 last">
-            <%= v.text_field :billing_city, :class => "text" %>
+            <%= f.text_field :lname, :class => "text" %>
           </div>
           <div class="span-3">
-            <label for="state">State</label>
+            <label for="email">Email</label>
           </div>
           <div class="span-8 last">
-            <%= v.text_field :billing_state, :class => "text"  %>
+            <%= f.text_field :email, :class => "text" %>
           </div>
-          <div class="span-3">
-            <label for="country">Country</label>
-          </div>
-          <div class="span-8 last">
-            <%= v.select :billing_country, [["United Kingdom", "United Kingdom"]], :class => "span-8" %>
-          </div>
-          <div class="span-11">
+          <% fields_for :address, @address do |v| %>
             <div class="span-3">
-              <label for="pin_code">Post Code</label>
+              <label for="billing_address">Billing Address</label>
             </div>
             <div class="span-8 last">
-              <%= v.text_field :billing_pincode, :class => "text" %>
+              <%= v.text_area :billing_address %>
             </div>
-          </div>
-          <div class="span-11">
-            <input type="checkbox" onclick="showMe('show', this)" name="shipping" />
-            <label for="">Check here if your shipping address is different than billing address</label>
-          </div>
+            <div class="span-3">
+              <label for="city">City</label>
+            </div>
+            <div class="span-8 last">
+              <%= v.text_field :billing_city, :class => "text" %>
+            </div>
+            <div class="span-3">
+              <label for="state">State</label>
+            </div>
+            <div class="span-8 last">
+              <%= v.text_field :billing_state, :class => "text"  %>
+            </div>
+            <div class="span-3">
+              <label for="country">Country</label>
+            </div>
+            <div class="span-8 last">
+              <%= v.select :billing_country, [["United Kingdom", "United Kingdom"]], :class => "span-8" %>
+            </div>
+            <div class="span-11">
+              <div class="span-3">
+                <label for="pin_code">Post Code</label>
+              </div>
+              <div class="span-8 last">
+                <%= v.text_field :billing_pincode, :class => "text" %>
+              </div>
+            </div>
+            <div class="span-11">
+              <input type="checkbox" id="shipping" name="shipping" />
+              <label for="">Check here if your shipping address is different than billing address</label>
+            </div>
+          </fieldset>
+        </div>
+
+        <div class="span-11 last formbg" id="show" style="display: none;">
+          <fieldset>
+            <legend>Your Shipping Address</legend>
+            <div class="span-3">
+              <label for="billing_address">Shipping Address</label>
+            </div>
+            <div class="span-8 last">
+              <%= v.text_area :shipping_address, :class => "span-7" %>
+            </div>
+            <div class="span-3">
+              <label for="city">City</label>
+            </div>
+            <div class="span-8 last">
+              <%= v.text_field :shipping_city, :class => "text span-7" %>
+            </div>
+            <div class="span-3">
+              <label for="state">State</label>
+            </div>
+            <div class="span-8 last">
+              <%= v.text_field :shipping_state, :class => "text span-7"  %>
+            </div>
+
+            <div class="span-3">
+              <label for="country">Country</label>
+            </div>
+            <div class="span-8 last">
+              <%= v.select :shipping_country, [["United Kingdom", "United Kingdom"]], :class => "span-7" %>
+            </div>
+            <div class="span-11 last">
+              <div class="span-3">
+                <label for="pin_code">Post Code</label>
+              </div>
+              <div class="span-8 last">
+                <%= v.text_field :shipping_pincode, :class => "text span-7" %>
+              </div>
+            </div>
+          <% end %>
         </fieldset>
       </div>
 
-      <div class="span-12 last" id="show" style="display: none;">
-        <fieldset>
-          <legend>Your Shipping Address</legend>
-          <div class="span-3">
-            <label for="billing_address">Shipping Address</label>
-          </div>
-          <div class="span-8 last">
-            <%= v.text_area :shipping_address %>
-          </div>
-          <div class="span-3">
-            <label for="city">City</label>
-          </div>
-          <div class="span-8 last">
-            <%= v.text_field :shipping_city, :class => "text" %>
-          </div>
-          <div class="span-3">
-            <label for="state">State</label>
-          </div>
-          <div class="span-8 last">
-            <%= v.text_field :shipping_state, :class => "text"  %>
-          </div>
-
-          <div class="span-3">
-            <label for="country">Country</label>
-          </div>
-          <div class="span-8 last">
-            <%= v.select :shipping_country, [["United Kingdom", "United Kingdom"]], :class => "span-8" %>
-          </div>
-          <div class="span-11 last">
-            <div class="span-3">
-              <label for="pin_code">Post Code</label>
+      <div class="span-24">
+        <div class="span-12 formbg">
+          <fieldset>
+            <legend>Your card Detail</legend>
+            <div class="span-12">
+              <div class="span-3">
+                <label for="card_type">Card Type</label>
+              </div>
+              <div class="span-8 last">
+                <%= f.select :card_type, [["Visa", "visa"], ["MasterCard", "master"], ["Discover", "discover"], ["American Express", "american_express"]] %>
+              </div>
             </div>
-            <div class="span-8 last">
-              <%= v.text_field :shipping_pincode, :class => "text" %>
+            <%= f.hidden_field :quantity, :value => "#{session[:quantity]}" %>
+            <%= f.hidden_field :total_price, :value => "#{session[:total_price]}" %>
+            <div class="span-12">
+              <div class="span-3">
+                <label for="card_number">Card Number</label>
+              </div>
+              <div class="span-8 last">
+                <%= f.text_field :card_number, :class => "text" %>
+              </div>
+              <div class="span-3">
+                <label for="card_verification">Card Verification</label>
+              </div>
+              <div class="span-8 last">
+                <%= f.text_field :card_verification, :class => "text" %>
+              </div>
+              <div class="span-3">
+                <label for="card_expires_on">Card Expires On</label>
+              </div>
+              <div class="span-8 last">
+                <%= f.date_select :card_expires_on, :discard_day => true, :start_year => Date.today.year, :end_year => (Date.today.year+10), :add_month_numbers => true %>
+              </div>
             </div>
-          </div>
-        <% end %>
-      </fieldset>
-    </div>
 
-    <div class="span-24 prepend-top">
-      <fieldset>
-        <legend>Your card Detail</legend>
-        <div class="span-12">
-          <div class="span-3">
-            <label for="card_type">Card Type</label>
-          </div>
-          <div class="span-8 last">
-            <%= f.select :card_type, [["Visa", "visa"], ["MasterCard", "master"], ["Discover", "discover"], ["American Express", "american_express"]] %>
-          </div>
+          </fieldset>
         </div>
-        <%= f.hidden_field :quantity, :value => "#{session[:quantity]}" %>
-        <%= f.hidden_field :total_price, :value => "#{session[:total_price]}" %>
-        <div class="span-12">
-          <div class="span-3">
-            <label for="card_number">Card Number</label>
-          </div>
-          <div class="span-8 last">
-            <%= f.text_field :card_number, :class => "text" %>
-          </div>
-          <div class="span-3">
-            <label for="card_verification">Card Verification</label>
-          </div>
-          <div class="span-8 last">
-            <%= f.text_field :card_verification, :class => "text" %>
-          </div>
-          <div class="span-3">
-            <label for="card_expires_on">Card Expires On</label>
-          </div>
-          <div class="span-8 last">
-            <%= f.date_select :card_expires_on, :discard_day => true, :start_year => Date.today.year, :end_year => (Date.today.year+10), :add_month_numbers => true %>
-          </div>
+      </div>
+
+
+      <div class="span-5 prepend-18">
+        <div class="button">
+          <%= f.submit 'Checkout', :class => "button_in" %>
         </div>
-
-      </fieldset>
-    </div>
-    <div class="span-12 prepend-21">
-      <%= f.submit 'Checkout' %>
-    </div>
-  <% end %>
-
+      </div>
+    <% end %>
+  </div>
+  <div class="clear"></div>
 </div>
 
 <script language="javascript">
-  function showMe (it, box) {
-    var vis = (box.checked) ? "block" : "none";
-    document.getElementById(it).style.display = vis;s
-  }
+  $(document).ready(function(){
+    $("#shipping").click(function(){
+      $("#show").toggle();
+    });
+  });
 </script>

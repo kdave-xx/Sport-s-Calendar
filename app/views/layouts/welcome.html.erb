@@ -14,13 +14,13 @@
     <div id="header">
       <div class="header">
         <div class="lefthead">
-          <div class="seeur"><img src="images/seeyour.png" /> </div>
+          <div class="seeur"><%= image_tag("seeyour.png") %></div>
           <div class="lefthead">
-            <div class="choose"><img src="images/choose.png" /></div>
-            <div class="sport"><img src="images/sport.png" /></div>
+            <div class="choose"><%= image_tag("choose.png") %></div>
+            <div class="sport"><%= image_tag("sport.png") %></div>
           </div>
         </div>
-        <div class="custom"><img src="images/cusotmcalendar2011.png" /> </div>
+        <div class="custom"><%= image_tag("cusotmcalendar2011.png") %></div>
         <div class="nav">
           <ul>
             <li><a href="#"> HOW TO ORDER &nbsp;|</a></li>
@@ -29,16 +29,16 @@
             <li><a href="#"> Contact</a></li>
           </ul>
         </div>
-        <div class="rightcornor"><img src="images/3simple.png" /></div>
+        <div class="rightcornor"><%= image_tag("3simple.png") %></div>
       </div>
     </div>
 
-        <%- flash.each do |name, msg| -%>
-          <%= content_tag :div, msg, :class => "#{name}" %>
-        <%- end -%>
+    <%- flash.each do |name, msg| -%>
+      <%= content_tag :div, msg, :class => "#{name}" %>
+    <%- end -%>
 
 
-        <%=yield %>
+    <%=yield %>
 
   </body>
 </html>

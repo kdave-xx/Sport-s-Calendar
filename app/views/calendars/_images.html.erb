@@ -1,7 +1,9 @@
 
 <% @global_images.each do |image| %>
-  <div class="span-5">
-    <%= image_tag image.attachment.url, :width => "100", :height => "100"  %>
+  <div class="span-4">
+    <div id="display_<%= image.id %>" class="span-4">
+    <%= image_tag image.attachment.url(:medium)  %>
+    </div>
     <div class="span"><%= check_box_tag "global_images[]", image.id, false, {:class => "chk"} %></div>
     <%#= hidden_field_tag :"customer_image_#{image.id}", params[:page_id] %>
   </div>

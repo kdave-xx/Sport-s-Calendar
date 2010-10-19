@@ -1,14 +1,16 @@
-<div class="span-24 prepend-top">
+<div class="span-24">
   <% val = @month.to_i %>
 <%# 12.times do |i| %>
   <% for i in val..12 %>
     <% fields_for :images do |image_form| %>
       <% month = Date.parse("2011-#{val}-01") %>
-      <div class="span-4"><%= image_form.label :image, "Image For #{month.strftime("%B")}" %></div>
-      <div class="span-4" id="select_<%= i %>"><img src="images/image5.jpg" width="121" height="92" /></div>
+      <div class="span-4">
+      <div class="span-4"><strong><%= image_form.label :image, "Image For #{month.strftime("%B")}" %></strong></div>
+      <div class="span-4" id="select_<%= i %>"><img src="../images/image5.jpg" width="147" height="100" /></div>
       <div class="image_<%= i %> span-4">
-        <a href="#" class="jqModal black" rel="<%= i %>" id="image_<%= i %>">Choose images</a> <%#= image_form.file_field :"attachment_#{i+1}", :size => "25" %>
+        <a href="#" class="jqModal black" rel="<%= i %>" id="image_<%= i %>">Choose images</a> 
         <%= hidden_field_tag :"global_image_#{i}" %>
+      </div>
       </div>
     <% end %>
     <% val = val+1 %>
@@ -18,11 +20,13 @@
 <% for i in 1..@month.to_i-1  %>
   <% fields_for :images do |image_form| %>
     <% month = Date.parse("2011-#{i}-01") %>
-    <div class="span-4"><%= image_form.label :image, "Image For #{month.strftime("%B")}" %></div>
-    <div class="span-4" id="select_<%= i %>"><img src="images/image5.jpg" width="121" height="92" /></div>
+    <div class="span-4">
+    <div class="span-4"><strong><%= image_form.label :image, "Image For #{month.strftime("%B")}" %></strong></div>
+    <div class="span-4" id="select_<%= i %>"><img src="../images/image5.jpg" width="147" height="100" /></div>
     <div class="image_<%= i %> span-4">
       <a href="#" class="jqModal black" rel="<%= i %>" id="image_<%= i %>">Choose images</a>
       <%= hidden_field_tag :"global_image_#{i}" %>
+    </div>
     </div>
   <% end %>
 <% end %>
@@ -54,7 +58,16 @@
         // End
         //var ele1 = document.getElementById("delete_"+image_id)
         //ele1.style.display = "block"; //css("display", "block");
+         $("#select_"+page_id).each(function() {
+               var image = $(this).children("img");
+                image.remove();
+         });
+
+         $("#select_"+page_id).children().remove();
+         
+         
         $("#display_"+image_id).clone().appendTo("#select_"+page_id);
+        
         jQuery.ajax({
           type: "get",
           url: "<%= preview_calendar_path %>",

@@ -6,6 +6,8 @@
     <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
     <title>Sports Calendar: <%= controller.action_name %></title>
     <%= stylesheet_link_tag 'style' %>
+    <%= stylesheet_link_tag 'blueprint/screen', :media => "screen, projection" %>
+    <%= stylesheet_link_tag 'blueprint/print', :media => "print" %>
     <%= javascript_include_tag "jquery", "jquery.min", "application" %>
     <%= javascript_include_tag "jrails" %>
     <%= yield(:head) %>
@@ -14,22 +16,22 @@
     <div id="header">
       <div class="header">
         <div class="lefthead">
-          <div class="seeur"><img src="../images/seeyour.png" /> </div>
+          <div class="seeur"><%= image_tag("seeyour.png") %></div>
           <div class="lefthead">
-            <div class="choose"><img src="../images/choose.png" /></div>
-            <div class="sport"><img src="../images/sport.png" /></div>
+            <div class="choose"><%= image_tag("choose.png") %></div>
+            <div class="sport"><%= image_tag("sport.png") %></div>
           </div>
         </div>
-        <div class="custom"><img src="../images/cusotmcalendar2011.png" /> </div>
+        <div class="custom"><%= image_tag("cusotmcalendar2011.png") %></div>
         <div class="nav">
           <ul>
-            <li><a href="#"> HOW TO ORDER &nbsp;|</a></li>
-            <li><%= link_to "ORDER YOUR CALENDAR", new_calendar_path %>&nbsp;|</li>
-            <li><a href="#"> Help &nbsp;|</a></li>
+            <li><%= link_to "HOME |", root_url %>&nbsp;</li>
+            <li><a href="#"> testimonial&nbsp;|</a></li>
+            <li><%= link_to "ORDER", new_calendar_url %>&nbsp;|</li>
             <li><a href="#"> Contact</a></li>
           </ul>
         </div>
-        <div class="rightcornor"><img src="../images/3simple.png" /></div>
+        <div class="rightcornor"><%= image_tag("3simple.png") %></div>
       </div>
     </div>
 
