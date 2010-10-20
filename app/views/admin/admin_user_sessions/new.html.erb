@@ -1,5 +1,8 @@
-<div class="span-10 prepend-7">
-  <% form_for @admin_user_session, :url => admin_admin_user_sessions_path do |f| %>
+<div class="column span-24">
+         <div class="span-24 formbg prepend-top mgb">
+
+        <div class="span-10 prepend-7">
+  <% form_for @admin_user_session, :url => admin_admin_user_sessions_path, :class => "inline" do |f| %>
     <%= f.error_messages %>
     <fieldset>
       <legend>Admin Login</legend>
@@ -7,20 +10,22 @@
         <label for="login">Login:</label>
       </div>
       <div class="span-7 last">
-        <%= f.text_field :login %>
+        <%= f.text_field :login, :class => "text span-6" %>
       </div>
 
       <div class="span-2">
         <label for="password">Password:</label>
       </div>
       <div class="span-7 last">
-        <%= f.password_field :password %>
+        <%= f.password_field :password, :class => "text span-6" %>
       </div>
 
-      <div class="prepend-3">
+      <div class="prepend-2">
         <%= f.submit "Sign in", :class => "submit" %>
       </div>
 
     </fieldset>
   <% end %>
+          </div>
+      </div>
 </div>

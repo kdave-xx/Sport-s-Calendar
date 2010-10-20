@@ -1,16 +1,16 @@
 <div class="span-24 prepend-top">
 
   <table>
-    <caption><em>Listing Orders</em></caption>
-    <thead>
-      <tr class="comment-box">
-        <th >Order ID</th>
-        <th >Customer Name</th>
-        <th >Date</th>
-        <th >Status</th>
-        <th >Action</th>
+    <h3><em><b>Calendar Order List</b></em></h3>
+    
+      <tr class=" formbg1">
+        <th width="15%"  class=" formbg1">Order ID</th>
+        <th width="23%"  class=" formbg1">Customer Name</th>
+        <th width="16%"  class=" formbg1">Date</th>
+        <th width="25%"  class=" formbg1">Status</th>
+        <th width="21%"  class=" formbg1">Action</th>
       </tr>
-    </thead>
+    
     <tfoot>
       <tr>
         <td>
@@ -23,11 +23,11 @@
     <tbody>
       <% @orders.each do |order| %>
         <tr>
-          <td>09100056</td>
-          <td><%=h order.fullname %></td>
-          <td><%=h order.purchased_at %></td>
-          <td><%=h order.status %></td>
-          <td><%= link_to "View Details", admin_details_url(order) %>&nbsp;|&nbsp;<%= link_to "Edit", edit_admin_dashboard_url(order) %>&nbsp;|&nbsp;<%= link_to "Delete", admin_dashboard_url(order), :confirm => 'Are you sure?', :method => :delete %>&nbsp;</td>
+          <td class="formbg"><%=h order.id %></td>
+          <td class="formbg"><%=h order.fullname %></td>
+          <td class="formbg"><%=h order.purchased_at %></td>
+          <td class="formbg"><%=h order.status %></td>
+          <td class="formbg"><%= link_to "View Details", admin_details_url(order), :class => "black1" %><%= link_to "Edit", edit_admin_dashboard_url(order), :class => "black1" %><%= link_to "Delete", admin_dashboard_url(order), :confirm => 'Are you sure?', :method => :delete, :class => "black1" %></td>
         </tr>
       <% end %>
     </tbody>

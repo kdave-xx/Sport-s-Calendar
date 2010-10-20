@@ -3,8 +3,10 @@
     <tr>
       <td>
 <div id="calendar">
-  <%= link_to image_tag("previous.jpg"), :month => (@date.beginning_of_month-1) %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to image_tag("next.jpg"), :month => (@date.end_of_month+1) %>
+  <div class="span-1 first"><%= link_to image_tag("previous.jpg"), :month => (@date.beginning_of_month-1) %></div>
+  <div class="span-1 last"><%= link_to image_tag("next.jpg"), :month => (@date.end_of_month+1) %></div>
+<!--    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-->
     <% unless @image.blank? %>
     <%= image_tag @image.image.attachment.url, :width => "400", :height => "270" %>
     <% else %>

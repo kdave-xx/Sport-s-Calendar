@@ -17,16 +17,26 @@ class Admin::DashboardsController < ApplicationController
 
   def create
     @dashboard = Dashboard.new(params[:dashboard])
+    @global_images = Image.global
+    
     if @dashboard.save
       5.times do |i|
           next if !params[:images] || params[:images][:"attachment_#{i}"].blank?
           image = Image.create!(:attachment => params[:images][:"attachment_#{i}"], :is_admin => true)
-        end
-      redirect_to new_admin_dashboard_url
-      flash[:notice] = "Successfully Uploaded!"
-    else
-      render :action => "new"
-    end
+#          instance_variable_set("@image_#{i}", Image.new(:attachment => params[:images][:"attachment_#{i}"], :is_admin => true))
+      end
+#      if [@image_0, @image_1, @image_2, @image_3, @image_4].all?(&:valid?)
+#        [@image_0, @image_1, @image_2, @image_3, @image_4].all?(&:save!)
+        redirect_to new_admin_dashboard_url
+        flash[:notice] = "Successfully Uploaded!"
+#      else
+#        render :action => "new"
+#      end
+        
+   
+  else
+    render :action => "new"
+  end
   end
 
   def details
@@ -94,7 +104,8 @@ class Admin::DashboardsController < ApplicationController
         redirect_to admin_dashboards_url
         flash[:notice] = 'Setting was successfully updated.'
      else
-       render :action => "settings"
+       
+       redirect_to :action => "settings"
      end
     end
 
@@ -104,11 +115,16 @@ class Admin::DashboardsController < ApplicationController
       
       @admin_user.password = params[:admin_user][:password]
       @admin_user.password_confirmation = params[:admin_user][:password_confirmation]
+      if @admin_user.password.eql?(@admin_user.password_confirmation)
       if @admin_user.save
         flash[:notice] = "Password successfully updated"
         redirect_to admin_dashboards_url
       else
-        render :action => :settings
+        redirect_to :action => :settings
+      end
+      else
+        flash[:notice] = "Password doesn't match"
+        redirect_to :action => :settings
       end
     end
 

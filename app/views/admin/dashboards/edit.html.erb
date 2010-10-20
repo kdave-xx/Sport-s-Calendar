@@ -1,7 +1,8 @@
 <hr/>
 <div class="span-12 prepend-top first">
   <% form_for @order, :url => admin_dashboard_path(@order) do |f| %>
-    <%= f.error_messages %>
+    <%#= f.error_messages %>
+   <%= error_messages_for :order, :object => [@order, @address] %>
     <table class="span-24">
       <tr>
         <td>

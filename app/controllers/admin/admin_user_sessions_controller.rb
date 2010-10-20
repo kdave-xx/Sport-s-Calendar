@@ -1,6 +1,6 @@
 class Admin::AdminUserSessionsController < ApplicationController
   before_filter :require_admin, :only => [:destroy]
-  layout 'login'
+  layout 'admin'
   def new
     @admin_user_session = AdminUserSession.new
   end

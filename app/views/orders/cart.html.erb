@@ -38,9 +38,10 @@
 
 <script type="text/javascript">
   $(document).ready(function() {
-    $('#quantity').blur(function(){
+    $('#quantity').blur(function(e){
       var ele = document.getElementById("submit");
-      if($('#quantity').val() == "") {
+      if($('#quantity').val() == "")
+      {
         alert("Enter Quantity");
         $('#quantity').focus();
       }
@@ -49,7 +50,7 @@
         var charge = parseFloat($('.comment #delivery_charge').html());
         var tol = $("#quantity").val()*price;
         $('#total_price').val(tol+charge);
-        ele.disabled = false
+        if($('#total_price').val() >= 13.64)  ele.disabled = false;
       }
     });
   });
