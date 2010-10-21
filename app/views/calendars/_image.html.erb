@@ -1,10 +1,16 @@
+
 <div class="span-24">
   <% val = @month.to_i %>
+  <% if val.eql?(0) %>
+  <%= render :text => ""  %>
+  <%else%>
+  <% count = 0 %>
 <%# 12.times do |i| %>
   <% for i in val..12 %>
     <% fields_for :images do |image_form| %>
       <% month = Date.parse("2011-#{val}-01") %>
-      <% if val.eql?(6) || val.eql?(12) %>
+      <% count = count+1 %>
+      <% if count.eql?(6) || count.eql?(12) %>
         <div class="span-4 last">
         <% else %>
           <div class="span-4">
@@ -12,7 +18,7 @@
           <div class="span-4"><strong><%= image_form.label :image, "Image For #{month.strftime("%B")}" %></strong></div>
           <div class="span-4" id="select_<%= i %>"><img src="../images/image5.jpg" width="147" height="100" /></div>
           <div class="image_<%= i %> span-4">
-            <a href="#" class="jqModal black" rel="<%= i %>" id="image_<%= i %>">Choose images</a>
+            <a href="#" class="jqModal chs" rel="<%= i %>" id="image_<%= i %>">Choose images</a>
             <%= hidden_field_tag :"global_image_#{i}" %>
           </div>
         </div>
@@ -24,7 +30,8 @@
     <% for i in 1..@month.to_i-1  %>
       <% fields_for :images do |image_form| %>
         <% month = Date.parse("2011-#{i}-01") %>
-        <% if val.eql?(6) || val.eql?(12) %>
+        <% count = count+1 %>
+        <% if count.eql?(6) || count.eql?(12) %>
           <div class="span-4 last">
           <% else %>
             <div class="span-4">
@@ -32,12 +39,13 @@
             <div class="span-4"><strong><%= image_form.label :image, "Image For #{month.strftime("%B")}" %></strong></div>
             <div class="span-4" id="select_<%= i %>"><img src="../images/image5.jpg" width="147" height="100" /></div>
             <div class="image_<%= i %> span-4">
-              <a href="#" class="jqModal black" rel="<%= i %>" id="image_<%= i %>">Choose images</a>
+              <a href="#" class="jqModal chs" rel="<%= i %>" id="image_<%= i %>">Choose images</a>
               <%= hidden_field_tag :"global_image_#{i}" %>
             </div>
           </div>
         <% end %>
       <% end %>
+            <% end %>
     </div>
 
     <script type="text/javascript">

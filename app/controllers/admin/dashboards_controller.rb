@@ -28,7 +28,7 @@ class Admin::DashboardsController < ApplicationController
 #      if [@image_0, @image_1, @image_2, @image_3, @image_4].all?(&:valid?)
 #        [@image_0, @image_1, @image_2, @image_3, @image_4].all?(&:save!)
         redirect_to new_admin_dashboard_url
-        flash[:notice] = "Successfully Uploaded!"
+#        flash[:notice] = "Successfully Uploaded!"
 #      else
 #        render :action => "new"
 #      end
@@ -112,19 +112,20 @@ class Admin::DashboardsController < ApplicationController
 
     def update_password
       @admin_user = current_admin
+      @shipping = Shipping.find(:first)
       
       @admin_user.password = params[:admin_user][:password]
       @admin_user.password_confirmation = params[:admin_user][:password_confirmation]
-      if @admin_user.password.eql?(@admin_user.password_confirmation)
+#      if !@admin_user.password.eql?("") && !@admin_user.password_confirmation.eql?("")
       if @admin_user.save
         flash[:notice] = "Password successfully updated"
         redirect_to admin_dashboards_url
+#      else
+#        render :action => :settings
+#      end
       else
-        redirect_to :action => :settings
-      end
-      else
-        flash[:notice] = "Password doesn't match"
-        redirect_to :action => :settings
+#        flash[:notice] = "Password can't be empty"
+        render :action => :settings
       end
     end
 

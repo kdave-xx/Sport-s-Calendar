@@ -82,7 +82,7 @@
           <div class="prepend-1">
             <%= image_tag("print.gif") %>&nbsp;<%= link_to_function("Print this Order", "PrintThisPage();return false;") %><br/>
             <%= image_tag("pdf.gif") %>&nbsp;<%= link_to "Preview Calendar", admin_calendar_path(@calendar), :layout => false,  :popup => ['new_window','height=620,width=430'] %><br/>
-            <%= image_tag("download.gif") %>&nbsp;<%= link_to "Download Image", images_admin_dashboard_url(@order) %><br/>
+            <%#= image_tag("download.gif") %>&nbsp;<%#= link_to "Download Image", images_admin_dashboard_url(@order) %><br/>
           </div>
         </fieldset>
       <% end %>

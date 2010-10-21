@@ -6,12 +6,12 @@ class CreateAddresses < ActiveRecord::Migration
       t.string    :billing_city
       t.string    :billing_state
       t.string    :billing_country
-      t.integer   :billing_pincode
+      t.string   :billing_pincode
       t.text      :shipping_address
       t.string    :shipping_city
       t.string    :shipping_state
       t.string    :shipping_country
-      t.integer   :shipping_pincode
+      t.string   :shipping_pincode
       
       t.timestamps
     end

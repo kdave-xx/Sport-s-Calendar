@@ -211,6 +211,7 @@ h5 {font-weight:bold;font-size: 18px; color:#ffffff;}
 a{color:#FFFFFF; text-decoration:none;}
 .white{color:#FFFFFF;}
 .yellow{color:#FFFF00;}
+
 .black{float:right; color:#a77777;
 font-size:12px;
 font-weight:bold;}
@@ -218,6 +219,10 @@ font-weight:bold;}
 font-size:12px;
 font-weight:bold;}
 .black:hover{ text-decoration:underline; color:#a77777;}
+.chs{float:left; color:#a77777;
+font-size:12px;
+font-weight:bold;}
+.chs:hover{ text-decoration:underline; color:#a77777;}
 .button{background:url(../images/button.png) no-repeat; width:166px; height:60px; color:#FFFFFF; font-weight:bold; text-align:center;}
 .button_in{text-align:center; background:none; border:none; color:#FFFFFF; font-weight:bold; font-size:24px; padding-top:6px;}
 .pd{padding:10px;}
@@ -231,6 +236,6 @@ a.links_in:hover{ text-decoration:underline;}
 .mgb{margin-bottom:10px;}
 .calendercon{width:420px; float:left;}
 .calenderimg{padding:10px; float:left; border:1px solid #000000; width:400px;}
-.Month{ background:#FF0000; padding:20px 0 20px 20px; float:left; width:380px; font-size:30px; font-weight:bold; color:#FFFFFF;}
-.dayblack{width:19px; height:19px;font-size:18px; font-weight:bold; color:#000000; float:left; text-align:center;padding-top:10px;}
+.Month{ background:#FF0000; padding:5px 0 10px 20px; float:left; width:402px; font-size:30px; font-weight:bold; color:#FFFFFF;}
+.dayblack{width:17px; height:19px;font-size:18px; font-weight:bold; color:#000000; float:left; text-align:center;padding-top:10px;}
 .dayred{width:19px; height:19px;font-size:18px; font-weight:bold; color:#000000; float:left; text-align:center; padding-top:10px;}

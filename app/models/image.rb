@@ -1,6 +1,8 @@
 class Image < ActiveRecord::Base
   belongs_to :calendar
+  belongs_to :dashboard
   has_many :calendar_images
+  
 
   named_scope :global, :conditions => {:is_admin => true}
 

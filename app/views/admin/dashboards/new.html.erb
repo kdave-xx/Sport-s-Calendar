@@ -21,7 +21,7 @@
 
         <%= link_to_function "Click Here", "$('.mainbox_upload').toggle()" %> <b>To upload images</b>
 
-        <div class="mainbox_upload">
+        <div class="mainbox_upload" style="display:none;">
           <div class="span-12">
             <% 5.times do |i| %>
               <% fields_for :images do |image_form| %>
@@ -34,12 +34,13 @@
               <% end %>
             <% end %>
           </div>
-           </div>
+          
         <div class="span-24">
            <%= f.submit "Upload" %>
         </div>
         
         <% end %>
+           </div>
         <div class="clear"></div>
 
      

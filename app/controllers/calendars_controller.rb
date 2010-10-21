@@ -3,24 +3,25 @@ class CalendarsController < ApplicationController
   def new
     @calendar = Calendar.new
     @global_images = Image.global
-    @year = Date.today.year
+    @year = Date.today.next_year.year
     session[:image_id] = nil
   end
 
 
   def get_month
     @month = params[:text_value]
-    respond_to do |format|
+#    image_partial = render_to_string(:partial => 'image', :locals => {:calendar => @calendar, :month => @month})
+      respond_to do |format|
       format.js {
         render :update do |page|
-#          page << "alert('hgjhdfjs')"
           page.replace_html 'toggle', :partial => 'image', :locals => {:calendar => @calendar, :month => @month}
-          #page.hide 'tickerheadingedit_outer'
-#          page.show 'comp_latest'
         end
         }
     end
+    
+    
   end
+  
   def create
     @calendar = Calendar.new(params[:calendar])
     @global_images  = Image.global
@@ -44,6 +45,7 @@ class CalendarsController < ApplicationController
 
   def preview_calendar
     @date = params[:month] ? Date.parse(params[:month]) : Date.today.next_year.beginning_of_year
+    
     session[:image_id] ||= []
     session[:image_id] << params[:image_value]+","+params[:page_value] unless params[:image_value].blank? && params[:page_value].blank?
 

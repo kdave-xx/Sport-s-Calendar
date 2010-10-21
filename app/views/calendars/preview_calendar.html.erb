@@ -1,34 +1,70 @@
 <div id="main">
-  <table>
+  <table class="calendercon">
     <tr>
       <td>
+        <div id="calendar">
+          <div class="span-24">
+            <div class="span-2 first">
+              <% if @date.beginning_of_month.month == 1 %>
+                <%= link_to image_tag("previous.jpg"), :month => (@date.last_month.next_year) %>
+              <% else %>
+                <%= link_to image_tag("previous.jpg"), :month => (@date.last_month) %>
+              <% end %>
+            </div>
+            <div class="span-2 last">
+              <% if @date.end_of_month.month == 12 %>
+                <%= link_to image_tag("next.jpg"), :month => (@date.next_month.last_year) %>
+              <% else %>
+                <%= link_to image_tag("next.jpg"), :month => (@date.next_month) %>
+              <% end %>
+            </div>
+          </div>
+          <div class="calenderimg">
+            <% unless @image.blank? %>
+              <%= image_tag @image.attachment.url, :width => "400", :height => "270" %>
+            <% else %>
+              <%= image_tag("photo_not_available.jpg", :width => "400", :height => "270") %>
+            <% end %>
+          </div>
+          <div class="Month">
+            <%=h @date.strftime("%B %Y") %>
+          </div>
 
-<div id="calendar">
-  <div class="span-24">
-  <div class="span-9 first"><%= link_to image_tag("previous.jpg"), :month => (@date.beginning_of_month-1) %></div>
-  <div class="span-6 last"><%= link_to image_tag("next.jpg"), :month => (@date.end_of_month+1) %></div>
-  </div>
-  <!--<%#= link_to image_tag("previous.jpg"), :month => (@date.beginning_of_month-1) %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%#= link_to image_tag("next.jpg"), :month => (@date.end_of_month+1) %>-->
-   <% unless @image.blank? %>
-    <%= image_tag @image.attachment.url, :width => "400", :height => "270" %>
-    <% else %>
-    <%= image_tag("photo_not_available.jpg", :width => "400", :height => "270") %>
-    <% end %>
-    
-    <div class="monthname">
-    <h2 style="margin-left:35%;">
-    <%=h @date.strftime("%B %Y") %>
-    </h2>
-    </div>
-    <% calendar_for @calendars, :year => @date.year, :month => @date.month do |calendar| %>
-    <%= calendar.head('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday') %>
-    <% calendar.day(:day_method => :published_on) do |date, calendars| %>
-    <%= date.day %>
-    <% end %>
-  <% end %>
-</div>
+          <% calendar_for @calendars, :year => @date.year, :month => @date.month do |calendar| %>
+            <%#= calendar.head('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday') %>
+            <% calendar.head do %>
+              <% calendar.r do %>
+                <%= calendar.h('M', :class=>"dayblack") %>
+                <%= calendar.h('M', :class=>"dayblack") %>
+                <%= calendar.h('M', :class=>"dayblack") %>
+                <%= calendar.h('M', :class=>"dayblack") %>
+                <%= calendar.h('M', :class=>"dayblack") %>
+                <%= calendar.h('M', :class=>"dayblack") %>
+                <%= calendar.h('M', :class=>"dayblack") %>
+                <%= calendar.h('M', :class=>"dayblack") %>
+                <%= calendar.h('M', :class=>"dayblack") %>
+                <%= calendar.h('M', :class=>"dayblack") %>
+                <%= calendar.h('M', :class=>"dayblack") %>
+                <%= calendar.h('M', :class=>"dayblack") %>
+                <%= calendar.h('M', :class=>"dayblack") %>
+                <%= calendar.h('M', :class=>"dayblack") %>
+                <%= calendar.h('M', :class=>"dayblack") %>
+                <%= calendar.h('M', :class=>"dayblack") %>
+                <%= calendar.h('M', :class=>"dayblack") %>
+                <%= calendar.h('M', :class=>"dayblack") %>
+                <%= calendar.h('M', :class=>"dayblack") %>
+                <%= calendar.h('M', :class=>"dayblack") %>
+                <%= calendar.h('M', :class=>"dayblack") %>
+              <% end %>
+            <% end %>
+
+            <% calendar.day(:day_method => :calendar_date) do |date, calendars| %>
+              <%#= date.day %>
+            <% end %>
+          <% end %>
+        </div>
       </td>
-      </tr>
+    </tr>
   </table>
+
 </div>
