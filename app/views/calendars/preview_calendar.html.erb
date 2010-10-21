@@ -3,22 +3,22 @@
     <tr>
       <td>
         <div id="calendar">
-          <div class="span-24">
-            <div class="span-2 first">
+         
+            <div class="left">
               <% if @date.beginning_of_month.month == 1 %>
                 <%= link_to image_tag("previous.jpg"), :month => (@date.last_month.next_year) %>
               <% else %>
                 <%= link_to image_tag("previous.jpg"), :month => (@date.last_month) %>
               <% end %>
             </div>
-            <div class="span-2 last">
+            <div class="right">
               <% if @date.end_of_month.month == 12 %>
                 <%= link_to image_tag("next.jpg"), :month => (@date.next_month.last_year) %>
               <% else %>
                 <%= link_to image_tag("next.jpg"), :month => (@date.next_month) %>
               <% end %>
             </div>
-          </div>
+          
           <div class="calenderimg">
             <% unless @image.blank? %>
               <%= image_tag @image.attachment.url, :width => "400", :height => "270" %>
@@ -29,39 +29,47 @@
           <div class="Month">
             <%=h @date.strftime("%B %Y") %>
           </div>
-
+          <div class="left">
           <% calendar_for @calendars, :year => @date.year, :month => @date.month do |calendar| %>
             <%#= calendar.head('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday') %>
             <% calendar.head do %>
               <% calendar.r do %>
+                <%= calendar.h('S', :class=>"dayred") %>
                 <%= calendar.h('M', :class=>"dayblack") %>
+                <%= calendar.h('T', :class=>"dayblack") %>
+                <%= calendar.h('W', :class=>"dayblack") %>
+                <%= calendar.h('T', :class=>"dayblack") %>
+                <%= calendar.h('F', :class=>"dayblack") %>
+                <%= calendar.h('S', :class=>"dayblack") %>
+                <%= calendar.h('S', :class=>"dayred") %>
                 <%= calendar.h('M', :class=>"dayblack") %>
+                <%= calendar.h('T', :class=>"dayblack") %>
+                <%= calendar.h('W', :class=>"dayblack") %>
+                <%= calendar.h('T', :class=>"dayblack") %>
+                <%= calendar.h('F', :class=>"dayblack") %>
+                <%= calendar.h('S', :class=>"dayblack") %>
+                <%= calendar.h('S', :class=>"dayred") %>
                 <%= calendar.h('M', :class=>"dayblack") %>
-                <%= calendar.h('M', :class=>"dayblack") %>
-                <%= calendar.h('M', :class=>"dayblack") %>
-                <%= calendar.h('M', :class=>"dayblack") %>
-                <%= calendar.h('M', :class=>"dayblack") %>
-                <%= calendar.h('M', :class=>"dayblack") %>
-                <%= calendar.h('M', :class=>"dayblack") %>
-                <%= calendar.h('M', :class=>"dayblack") %>
-                <%= calendar.h('M', :class=>"dayblack") %>
-                <%= calendar.h('M', :class=>"dayblack") %>
-                <%= calendar.h('M', :class=>"dayblack") %>
-                <%= calendar.h('M', :class=>"dayblack") %>
-                <%= calendar.h('M', :class=>"dayblack") %>
-                <%= calendar.h('M', :class=>"dayblack") %>
-                <%= calendar.h('M', :class=>"dayblack") %>
-                <%= calendar.h('M', :class=>"dayblack") %>
-                <%= calendar.h('M', :class=>"dayblack") %>
-                <%= calendar.h('M', :class=>"dayblack") %>
-                <%= calendar.h('M', :class=>"dayblack") %>
+                <%= calendar.h('T', :class=>"dayblack") %>
+                <%= calendar.h('W', :class=>"dayblack") %>
+                <%= calendar.h('T', :class=>"dayblack") %>
+                <%= calendar.h('F', :class=>"dayblack") %>
+                <%= calendar.h('S', :class=>"dayblack") %>
               <% end %>
             <% end %>
 
-            <% calendar.day(:day_method => :calendar_date) do |date, calendars| %>
+            <%# calendar.day(:day_method => :calendar_date) do |date, calendars| %>
+              <% calendar.head do %>
+                <% calendar.r do %>
+                  <% 30.times do |i| %>
+                  <%#= calendar.d(i+1, :class=>"dayblack") %>
+                  <% end %>
+                <% end %>
+              <% end %>
               <%#= date.day %>
             <% end %>
-          <% end %>
+          <%# end %>
+          </div>
         </div>
       </td>
     </tr>
