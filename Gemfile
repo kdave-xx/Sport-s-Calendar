@@ -1,6 +1,7 @@
 source :gemcutter
 gem "rails", "2.3.8"
 gem "mysql"
+gem "rack", "1.1.0"
 
 # bundler requires these gems in all environments
  #gem "nokogiri", "1.4.2"
