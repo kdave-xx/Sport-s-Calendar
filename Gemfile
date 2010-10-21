@@ -9,7 +9,7 @@ gem "mysql"
 
 group :development do
   # bundler requires these gems in development
-    gem "rails-footnotes"
+    #gem "rails-footnotes"
     gem "paperclip"
     gem "authlogic"
     gem 'will_paginate'
@@ -27,7 +27,7 @@ end
 
 group :production do
   # bundler requires these gems in development
-    gem "rails-footnotes"
+    #gem "rails-footnotes"
     gem "paperclip"
     gem "authlogic"
     gem 'will_paginate'
