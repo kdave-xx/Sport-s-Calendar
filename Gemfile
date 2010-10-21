@@ -10,13 +10,13 @@ gem "mysql"
 group :development do
   # bundler requires these gems in development
     #gem "rails-footnotes"
-    gem "paperclip"
-    gem "authlogic"
-    gem 'will_paginate'
-    gem "activemerchant"
-    gem "table_builder"
     gem "capistrano"
-    gem "rubyzip"
+    gem "paperclip", "2.3.4"
+    gem "authlogic", "2.1.6"
+    gem 'will_paginate', "2.3.15"
+    gem "activemerchant", "1.9.0"
+    gem "table_builder", "0.2.3"
+    gem "rubyzip", "0.9.4"
 end
 
 group :test do
@@ -31,7 +31,7 @@ group :production do
     gem "paperclip", "2.3.4"
     gem "authlogic", "2.1.6"
     gem 'will_paginate', "2.3.15"
-    gem "activemerchant", "1.9.0,"
+    gem "activemerchant", "1.9.0"
     gem "table_builder", "0.2.3"
     gem "rubyzip", "0.9.4"
 end
