@@ -37,13 +37,13 @@ class OrdersController < ApplicationController
   if [@order, @address].all?(&:valid?)
     @order.transaction do
       if @order.save
-        if @order.purchase
+#        if @order.purchase
            flash[:notice] = "Thank You!"
            redirect_to calendar_order_url(@order)
-        else
-          flash[:notice] = "failure"
-          render :action => :new
-        end
+#        else
+#          flash[:notice] = "failure"
+#          render :action => :new
+#        end
       end
     end
 #    rescue Exception => exc
