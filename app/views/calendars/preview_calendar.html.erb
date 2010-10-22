@@ -59,10 +59,15 @@
             <% end %>
 
             <%# calendar.day(:day_method => :calendar_date) do |date, calendars| %>
-              <% calendar.head do %>
+             <% calendar.head do %>
                 <% calendar.r do %>
-                  <% 30.times do |i| %>
-                  <%#= calendar.d(i+1, :class=>"dayblack") %>
+                  <% 21.times do |i| %>
+                  <%= calendar.d(i+1, :class=>"daylit") %>
+                  <% end %>
+                <% end %>
+            <% calendar.r do %>
+                  <% 9.times do |i| %>
+                  <%= calendar.d(i+22, :class=>"daylit") %>
                   <% end %>
                 <% end %>
               <% end %>

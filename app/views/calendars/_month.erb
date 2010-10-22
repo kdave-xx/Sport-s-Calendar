@@ -1,0 +1,7 @@
+<% calendar.head do %>
+                <% calendar.r do %>
+                  <% 21.times do |i| %>
+                  <%= calendar.d(i+1, :class=>"daylit") %>
+                  <% end %>
+                <% end %>
+              <% end %>

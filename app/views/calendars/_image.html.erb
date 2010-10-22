@@ -2,34 +2,13 @@
 <div class="span-24">
   <% val = @month.to_i %>
   <% if val.eql?(0) %>
-  <%= render :text => ""  %>
+    <%= render :text => ""  %>
   <%else%>
-  <% count = 0 %>
-<%# 12.times do |i| %>
-  <% for i in val..12 %>
-    <% fields_for :images do |image_form| %>
-      <% month = Date.parse("2011-#{val}-01") %>
-      <% count = count+1 %>
-      <% if count.eql?(6) || count.eql?(12) %>
-        <div class="span-4 last">
-        <% else %>
-          <div class="span-4">
-          <% end %>
-          <div class="span-4"><strong><%= image_form.label :image, "Image For #{month.strftime("%B")}" %></strong></div>
-          <div class="span-4" id="select_<%= i %>"><img src="../images/image5.jpg" width="147" height="100" /></div>
-          <div class="image_<%= i %> span-4">
-            <a href="#" class="jqModal chs" rel="<%= i %>" id="image_<%= i %>">Choose images</a>
-            <%= hidden_field_tag :"global_image_#{i}" %>
-          </div>
-        </div>
-      <% end %>
-      <% val = val+1 %>
-    <% end %>
-
-
-    <% for i in 1..@month.to_i-1  %>
+    <% count = 0 %>
+  <%# 12.times do |i| %>
+    <% for i in val..12 %>
       <% fields_for :images do |image_form| %>
-        <% month = Date.parse("2011-#{i}-01") %>
+        <% month = Date.parse("2011-#{val}-01") %>
         <% count = count+1 %>
         <% if count.eql?(6) || count.eql?(12) %>
           <div class="span-4 last">
@@ -37,15 +16,36 @@
             <div class="span-4">
             <% end %>
             <div class="span-4"><strong><%= image_form.label :image, "Image For #{month.strftime("%B")}" %></strong></div>
-            <div class="span-4" id="select_<%= i %>"><img src="../images/image5.jpg" width="147" height="100" /></div>
+            <div class="span-4" id="select_<%= i %>"><img src="../images/photo_not_available.jpg" width="147" height="100" /></div>
             <div class="image_<%= i %> span-4">
               <a href="#" class="jqModal chs" rel="<%= i %>" id="image_<%= i %>">Choose images</a>
               <%= hidden_field_tag :"global_image_#{i}" %>
             </div>
           </div>
         <% end %>
+        <% val = val+1 %>
       <% end %>
-            <% end %>
+
+
+      <% for i in 1..@month.to_i-1  %>
+        <% fields_for :images do |image_form| %>
+          <% month = Date.parse("2011-#{i}-01") %>
+          <% count = count+1 %>
+          <% if count.eql?(6) || count.eql?(12) %>
+            <div class="span-4 last">
+            <% else %>
+              <div class="span-4">
+              <% end %>
+              <div class="span-4"><strong><%= image_form.label :image, "Image For #{month.strftime("%B")}" %></strong></div>
+              <div class="span-4" id="select_<%= i %>"><img src="../images/photo_not_available.jpg" width="147" height="100" /></div>
+              <div class="image_<%= i %> span-4">
+                <a href="#" class="jqModal chs" rel="<%= i %>" id="image_<%= i %>">Choose images</a>
+                <%= hidden_field_tag :"global_image_#{i}" %>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      <% end %>
     </div>
 
     <script type="text/javascript">

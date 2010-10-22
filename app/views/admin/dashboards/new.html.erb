@@ -4,12 +4,13 @@
     <fieldset class="formbg">
       <div >
         <h4>View Images Here</h4>
-        <div class="">
+        <div class="span-23">
           <% @global_images.each do |image| %>
+          <div class="span-4">
             <%= link_to image_tag(image.attachment.url(:medium)), image.attachment.url, :rel => "example2" %>
-            
-              <%= link_to image_tag("cross.png"), admin_delete_image_url(image) %>
            
+              <%= link_to image_tag("cross.png"), admin_delete_image_url(image) %>
+          </div>
           <% end %>
         </div>
       </div>
@@ -35,7 +36,7 @@
             <% end %>
           </div>
           
-        <div class="span-24">
+        <div class="span-22">
            <%= f.submit "Upload" %>
         </div>
         

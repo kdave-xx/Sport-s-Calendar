@@ -13,8 +13,10 @@
 
     margin-left: -300px;
     width: 600px;
-
-    background-color: #EEE;
+    height: 228px;
+    overflow: auto;
+   
+    background-color: #D8C6C6;
     color: #333;
     border: 1px solid black;
     padding: 12px;
